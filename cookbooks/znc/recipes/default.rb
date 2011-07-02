@@ -65,6 +65,7 @@ if !Chef::Config.solo
 else
   users = node[:znc][:users]
 end
+Chef::Log.info('users: '+users.inspect)
 
 # render znc.conf
 template "#{node['znc']['data_dir']}/configs/znc.conf" do
