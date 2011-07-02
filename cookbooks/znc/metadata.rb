@@ -11,6 +11,11 @@ depends "build-essential"
   supports os
 end
 
+recipe "znc::default","Install and configure ZNC."
+recipe "znc::module_colloquy","Install colloquy ZNC module."
+recipe "znc::package","Install ZNC package."
+recipe "znc::source","Install and configure ZNC from source."
+
 attribute "znc/user",
   :display_name => "ZNC System User",
   :description => "The name of the system user under which ZNC will be run",
