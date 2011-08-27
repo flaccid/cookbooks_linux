@@ -33,20 +33,29 @@ group node['znc']['group']
   node['znc']['users_dir']
 ].each do |dir|
   directory dir do
-    owner node['znc']['user']
-    group node['znc']['group']
+    owner node['znc']['system_user']
+    group node['znc']['system_group']
   end
 end
 
 service "znc"
 
+pass_plain = node.znc.admin_password
+salt = `openssl rand -base64 20`
+cmd = "echo -n \"#{pass_plain}#{salt}\" | openssl dgst -sha256" 
+pass_hash = `#{cmd}`
+pass = "sha256##{pass_hash}##{salt}#"
+
 # render znc.conf
 template "#{node.znc.data_dir}/configs/znc.conf" do
   source "znc.conf.erb"
   mode 0600
-  owner node.znc.user
-  group node.znc.group
+  owner node.znc.system_user
+  group node.znc.system_group
   variables(
+    :admin_user => node.znc.admin_user,
+    :admin_password => "#{pass}",
+    :admin_server => "irc.freenode.net 6667"
     :users => users,  
     :modules => node.znc.modules,
     :data_dir => node.znc.data_dir,
