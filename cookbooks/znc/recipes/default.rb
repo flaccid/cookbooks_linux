@@ -18,15 +18,10 @@
 # install znc
 include_recipe "znc::install"
 
-# install znc rc script
-template "/etc/init.d/znc" do
-  source "znc.init.erb"
-  owner "root"
-  group "root"
-  mode "0755"
-end
+# install znc service
+include_recipe "znc::install_service"
 
-# install main configuration
+# configure znc
 include_recipe "znc::configure"
 
 # set permissions on configuration files
@@ -51,9 +46,3 @@ include_recipe "znc::add_user"
 
 # enable/disable modules
 include_recipe "znc::modules"
-
-# enable znc system service
-service "znc" do
-  supports :restart => true
-  action [:enable]
-end
