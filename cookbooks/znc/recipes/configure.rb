@@ -31,7 +31,11 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   group node.znc.group
   variables(
     :users => users,  
-    :modules => node.znc.modules_enabled
+    :modules => node.znc.modules_enabled,
+    :data_dir => node.znc.data_dir,
+    :skin => node.znc.skin,
+    :max_buffer_size => node.znc.max_buffer_size,
+    :port => node.znc.port
   )
   notifies :start, "service[znc]", :immediately
 end
