@@ -25,5 +25,5 @@ end
 
 service "znc" do
    supports :restart => true, :start => true, :stop => true
-   action :nothing
+   action :enable
 end
