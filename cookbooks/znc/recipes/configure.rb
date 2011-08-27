@@ -16,11 +16,19 @@
 # limitations under the License.
 
 package "coreutils" do
-  action: install
+  action :install
 end
 
-user node['znc']['system_user']
-group node['znc']['system_group']
+user node['znc']['system_user'] do
+  comment "ZNC daemon"
+  system true
+do
+
+group node['znc']['system_group'] do
+  members ['znc']
+end
+
+service "znc"
 
 # set permissions on configuration files
 [ node['znc']['data_dir'], 
@@ -33,8 +41,6 @@ group node['znc']['system_group']
     group node['znc']['system_group']
   end
 end
-
-service "znc"
 
 if !Chef::Config.solo
   users = search(:users, 'groups:znc')
