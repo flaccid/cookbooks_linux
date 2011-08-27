@@ -15,9 +15,7 @@
       "choice": [
         "dark-clouds"
       ],
-      "default": [
-        "dark-clouds"
-      ],
+      "default": "dark-clouds",
       "type": "string",
       "recipes": [
         "znc::configure"
@@ -78,9 +76,7 @@
       "choice": [
         "+7777"
       ],
-      "default": [
-        "+7777"
-      ],
+      "default": "+7777",
       "type": "string",
       "recipes": [
         "znc::configure"
