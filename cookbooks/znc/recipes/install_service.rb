@@ -24,5 +24,6 @@ template "/etc/init.d/znc" do
 end
 
 service "znc" do
-  action :nothing
+   supports :restart => true, :start => true, :stop => true
+   action :nothing
 end
