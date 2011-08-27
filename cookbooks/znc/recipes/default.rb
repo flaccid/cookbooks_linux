@@ -25,9 +25,11 @@ include_recipe "znc::install_service"
 include_recipe "znc::configure"
 
 # set permissions on configuration files
+
 user node['znc']['user']
 
 group node['znc']['group']
+
 [ node['znc']['data_dir'], 
   node['znc']['conf_dir'],
   node['znc']['module_dir'],
