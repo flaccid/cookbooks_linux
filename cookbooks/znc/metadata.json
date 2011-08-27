@@ -21,7 +21,7 @@
         "znc::modules"
       ],
       "description": "The ZNC modules to enable globally.",
-      "display_name": "ZNC Modules Enabled."
+      "display_name": "ZNC Modules Enabled"
     },
     "znc/group": {
       "required": "optional",
@@ -32,6 +32,7 @@
       "default": "znc",
       "type": "string",
       "recipes": [
+        "znc::default",
         "znc::install"
       ],
       "description": "The name of the system group under which ZNC will be run",
@@ -46,6 +47,7 @@
       "default": "znc",
       "type": "string",
       "recipes": [
+        "znc::default",
         "znc::install"
       ],
       "description": "The name of the system user under which ZNC will be run.",
@@ -90,6 +92,7 @@
       "default": "/etc/znc",
       "type": "string",
       "recipes": [
+        "znc::default",
         "znc::install"
       ],
       "description": "Directory where ZNC data will be stored",
@@ -136,6 +139,7 @@
       "default": "/etc/znc/users",
       "type": "string",
       "recipes": [
+        "znc::default",
         "znc::install"
       ],
       "description": "Directory where ZNC users will be stored",
@@ -150,6 +154,7 @@
       "default": "/var/log/znc",
       "type": "string",
       "recipes": [
+        "znc::default",
         "znc::install"
       ],
       "description": "Directory where ZNC logs will be stored",
@@ -164,6 +169,7 @@
       "default": "/etc/znc/configs",
       "type": "string",
       "recipes": [
+        "znc::default",
         "znc::install"
       ],
       "description": "Directory where ZNC configuration will be stored",
