@@ -42,7 +42,7 @@ attribute "znc/data_dir",
   :display_name => "ZNC Data Dir",
   :description => "Directory where ZNC data will be stored",
   :default => "/etc/znc",
-  :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
+  :recipes => ["znc::default", "znc::configure", "znc::generate_cert"]
   
 attribute "znc/conf_dir",
   :display_name => "ZNC Config Dir",
