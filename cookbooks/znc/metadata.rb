@@ -59,7 +59,7 @@ attribute "znc/module_dir",
   :display_name => "ZNC Module Dir",
   :description => "Directory where ZNC modules will be stored",
   :default => "/etc/znc/modules",
-  :recipes => ["znc::modules", "znc:module_colloquy"]
+  :recipes => ["znc::default", "znc::modules", "znc:module_colloquy"]
   
 attribute "znc/user_dir",
   :display_name => "ZNC User Dir",
