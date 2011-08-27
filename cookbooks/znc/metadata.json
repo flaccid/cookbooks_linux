@@ -29,7 +29,7 @@
       "choice": [
 
       ],
-      "default": "znc",
+      "default": "znc-admin",
       "type": "string",
       "recipes": [
         "znc::configure"

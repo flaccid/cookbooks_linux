@@ -29,7 +29,7 @@ recipe "znc::generate_cert","Generates x509 certificate for ZNC."
 attribute "znc/admin_user",
   :display_name => "ZNC Admin User",
   :description => "The name of the ZNC admin user.",
-  :default => "znc",
+  :default => "znc-admin",
   :recipes => ["znc::configure"]
 
 attribute "znc/system_user",
