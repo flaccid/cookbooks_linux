@@ -33,7 +33,8 @@
       "type": "string",
       "recipes": [
         "znc::default",
-        "znc::install"
+        "znc::install",
+        "znc::generate_cert"
       ],
       "description": "The name of the system group under which ZNC will be run",
       "display_name": "ZNC System Group"
@@ -48,7 +49,8 @@
       "type": "string",
       "recipes": [
         "znc::default",
-        "znc::install"
+        "znc::install",
+        "znc::generate_cert"
       ],
       "description": "The name of the system user under which ZNC will be run.",
       "display_name": "ZNC System User"
@@ -94,7 +96,8 @@
       "type": "string",
       "recipes": [
         "znc::default",
-        "znc::install"
+        "znc::install",
+        "znc::generate_cert"
       ],
       "description": "Directory where ZNC data will be stored",
       "display_name": "ZNC Data Dir"
@@ -139,7 +142,8 @@
       "type": "string",
       "recipes": [
         "znc::default",
-        "znc::install"
+        "znc::install",
+        "znc::generate_cert"
       ],
       "description": "Directory where ZNC users will be stored",
       "display_name": "ZNC User Dir"
@@ -222,6 +226,7 @@
     "znc::change_user_password": "Changes a ZNC user's password.",
     "znc::stop": "Stops the ZNC daemon.",
     "znc::default": "Install and configure ZNC.",
+    "znc::generate_cert": "Generates x509 certificate for ZNC.",
     "znc::source": "Installs ZNC from source.",
     "znc::start": "Starts the ZNC daemon."
   },

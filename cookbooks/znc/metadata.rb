@@ -24,24 +24,25 @@ recipe "znc::modules","Enables desired ZNC modules."
 recipe "znc::module_colloquy","Install and enable Colloquy ZNC module."
 recipe "znc::package","Installs ZNC from package."
 recipe "znc::source","Installs ZNC from source."
+recipe "znc::generate_cert","Generates x509 certificate for ZNC."
 
 attribute "znc/user",
   :display_name => "ZNC System User",
   :description => "The name of the system user under which ZNC will be run.",
   :default => "znc",
-  :recipes => ["znc::default", "znc::install"]
+  :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
   
 attribute "znc/group",
   :display_name => "ZNC System Group",
   :description => "The name of the system group under which ZNC will be run",
   :default => "znc",
-  :recipes => ["znc::default", "znc::install"]
+  :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
   
 attribute "znc/data_dir",
   :display_name => "ZNC Data Dir",
   :description => "Directory where ZNC data will be stored",
   :default => "/etc/znc",
-  :recipes => ["znc::default", "znc::install"]
+  :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
   
 attribute "znc/conf_dir",
   :display_name => "ZNC Config Dir",
@@ -65,7 +66,7 @@ attribute "znc/user_dir",
   :display_name => "ZNC User Dir",
   :description => "Directory where ZNC users will be stored",
   :default => "/etc/znc/users",
-  :recipes => ["znc::default", "znc::install"]
+  :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
   
 attribute "znc/install_method",
   :display_name => "ZNC Install Method",
