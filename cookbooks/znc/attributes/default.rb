@@ -18,6 +18,7 @@
 #
 
 default['znc']['install_method'] = 'package'
+default['znc']['admin'] = 'znc-admin'
 
 set['znc']['system_user'] = 'znc'
 set['znc']['system_group'] = 'znc'
