@@ -124,9 +124,7 @@
       "default": "package",
       "type": "string",
       "recipes": [
-        "znc::install",
-        "znc::package",
-        "znc::source"
+        "znc::install"
       ],
       "description": "The installation source for znc, either source or package",
       "display_name": "ZNC Install Method"

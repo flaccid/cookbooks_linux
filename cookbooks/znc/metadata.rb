@@ -72,7 +72,7 @@ attribute "znc/install_method",
   :description => "The installation source for znc, either source or package",
   :choice => ["package","source"],
   :default => "package",
-  :recipes => ["znc::install", "znc::package", "znc::source"]
+  :recipes => ["znc::install"]
     
 attribute "znc/modules_enabled",
   :display_name => "ZNC Modules Enabled",
