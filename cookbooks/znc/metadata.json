@@ -1,11 +1,11 @@
 {
-  "maintainer": "Seth Chisamore",
+  "maintainer": "Chris Fordham",
   "replacing": {
   },
-  "maintainer_email": "cookbooks@chisamore.com",
+  "maintainer_email": "chris.fordham@rightscale.com",
   "groupings": {
   },
-  "description": "Installs/Configures ZNC IRC bouncer",
+  "description": "Installs/Configures ZNC IRC bouncer.",
   "recommendations": {
   },
   "attributes": {
@@ -24,7 +24,7 @@
       "display_name": "ZNC Modules Enabled."
     },
     "znc/group": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
 
@@ -38,7 +38,7 @@
       "display_name": "ZNC System Group"
     },
     "znc/user": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
 
@@ -58,6 +58,7 @@
         "yes",
         "no"
       ],
+      "default": "no",
       "type": "string",
       "recipes": [
         "znc::install"
@@ -66,7 +67,7 @@
       "display_name": "ZNC Foreground Mode"
     },
     "znc/module_dir": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
 
@@ -81,7 +82,7 @@
       "display_name": "ZNC Module Dir"
     },
     "znc/data_dir": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
 
@@ -101,6 +102,7 @@
         "yes",
         "no"
       ],
+      "default": "no",
       "type": "string",
       "recipes": [
         "znc::install"
@@ -109,7 +111,7 @@
       "display_name": "ZNC Run in Screen"
     },
     "znc/install_method": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
         "package",
@@ -118,13 +120,15 @@
       "default": "package",
       "type": "string",
       "recipes": [
-        "znc::install"
+        "znc::install",
+        "znc::package",
+        "znc::source"
       ],
       "description": "The installation source for znc, either source or package",
       "display_name": "ZNC Install Method"
     },
     "znc/user_dir": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
 
@@ -138,7 +142,7 @@
       "display_name": "ZNC User Dir"
     },
     "znc/log_dir": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
 
@@ -152,7 +156,7 @@
       "display_name": "ZNC Log Dir"
     },
     "znc/conf_dir": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
 
@@ -172,6 +176,7 @@
         "yes",
         "no"
       ],
+      "default": "no",
       "type": "string",
       "recipes": [
 
