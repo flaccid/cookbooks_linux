@@ -22,3 +22,7 @@ template "/etc/init.d/znc" do
   group "root"
   mode "0755"	 	
 end
+
+service "znc" do
+  action :nothing
+end
