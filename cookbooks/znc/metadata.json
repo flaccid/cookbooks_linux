@@ -9,6 +9,19 @@
   "recommendations": {
   },
   "attributes": {
+    "znc/skin": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+        "dark-clouds"
+      ],
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "ZNC skin.",
+      "display_name": "ZNC Skin"
+    },
     "znc/modules_enabled": {
       "required": "optional",
       "calculated": false,
@@ -56,6 +69,19 @@
       "description": "The name of the system user under which ZNC will be run.",
       "display_name": "ZNC System User"
     },
+    "znc/port": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+        "+7777"
+      ],
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "ZNC daemon listen port.",
+      "display_name": "ZNC IPv4 Listen Port"
+    },
     "znc/foreground": {
       "required": "optional",
       "calculated": false,
@@ -102,6 +128,20 @@
       ],
       "description": "Directory where ZNC data will be stored",
       "display_name": "ZNC Data Dir"
+    },
+    "znc/max_buffer_size": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+        "500",
+        "1024"
+      ],
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "ZNC maximum buffer size.",
+      "display_name": "ZNC Max Buffer Size"
     },
     "znc/use_screen_session": {
       "required": "optional",

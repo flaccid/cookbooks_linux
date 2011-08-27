@@ -107,3 +107,22 @@ attribute "znc/users",
   :description => "Initial users to create when configuring ZNC.",
   :require => 'required',
   :recipes => ["znc::configure"]
+  
+attribute "znc/max_buffer_size",
+  :display_name => "ZNC Max Buffer Size",
+  :description => "ZNC maximum buffer size.",
+  :choice => ['500', '1024'],
+  :recipes => ["znc::configure"]
+  
+attribute "znc/port",
+  :display_name => "ZNC IPv4 Listen Port",
+  :description => "ZNC daemon listen port.",
+  :choice => ['+7777'],
+  :recipes => ["znc::configure"]
+
+attribute "znc/skin",
+  :display_name => "ZNC Skin",
+  :description => "ZNC skin.",
+  :choice => ["dark-clouds"],
+  :recipes => ["znc::configure"]
+  
