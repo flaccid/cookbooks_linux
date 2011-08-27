@@ -14,7 +14,7 @@ ConnectDelay = 5
 ServerThrottle = 30
 Skin         = <%= node['znc']['skin'] %>
 StatusPrefix = *
-<% node['znc']['modules'].each do |mod,params| -%>
+<% @modules.each do |mod,params| -%>
 LoadModule   = <%= "#{mod} #{params}".strip  %>
 <% end -%>
 
