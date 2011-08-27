@@ -79,7 +79,7 @@ attribute "znc/modules_enabled",
   :display_name => "ZNC Modules Enabled",
   :description => "The ZNC modules to enable globally.",
   :default => "admin",
-  :recipes => ["znc::modules"]
+  :recipes => ["znc::configure", "znc::modules"]
 
 attribute "znc/debug",
   :display_name => "ZNC Debug Mode",
@@ -101,3 +101,9 @@ attribute "znc/use_screen_session",
   :default => 'no',
   :choice => ['yes', 'no'],
   :recipes => ["znc::install"]
+  
+attribute "znc/users",
+  :display_name => "ZNC users",
+  :description => "Initial users to create when configuring ZNC.",
+  :require => 'required',
+  :recipes => ["znc::configure"]
