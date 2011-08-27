@@ -12,9 +12,14 @@ depends "build-essential"
 end
 
 recipe "znc::default","Install and configure ZNC."
-recipe "znc::module_colloquy","Install colloquy ZNC module."
-recipe "znc::package","Install ZNC package."
-recipe "znc::source","Install and configure ZNC from source."
+recipe "znc::install","Install ZNC."
+recipe "znc::configure","Configures the ZNC main configuration."
+recipe "znc::add_user","Add a ZNC user."
+recipe "znc::change_user_password","Changes a ZNC user's password."
+recipe "znc::modules","Enables desired ZNC modules."
+recipe "znc::module_colloquy","Install and enable Colloquy ZNC module."
+recipe "znc::package","Installs ZNC from package."
+recipe "znc::source","Installs ZNC from source."
 
 attribute "znc/user",
   :display_name => "ZNC System User",
@@ -56,3 +61,23 @@ attribute "znc/install_method",
   :description => "The installation source for znc, either source or package",
   :choice => ["package","source"],
   :default => "package"
+  
+attribute "znc/modules_enabled",
+  :display_name => "ZNC Modules Enabled.",
+  :description => "The ZNC modules to enable globally.",
+  :default => "admin"
+  
+attribute "znc/debug",
+  :display_name => "ZNC Debug Mode",
+  :description => "Enable/disable debugging of ZNC service start and process.",
+  :default => nil
+
+attribute "znc/foreground",
+  :display_name => "ZNC Foreground Mode",
+  :description => "Enable/disable foreground of the ZNC service process.",
+  :default => nil
+
+attribute "znc/use_screen_session",
+  :display_name => "ZNC Run in Screen",
+  :description => "Enable/disable starts/stops of the ZNC service in a screen session.",
+  :default => nil

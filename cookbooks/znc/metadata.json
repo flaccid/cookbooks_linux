@@ -1,20 +1,28 @@
 {
-  "providing": {
-  },
   "maintainer": "Seth Chisamore",
   "replacing": {
   },
-  "license": "Apache 2.0",
   "maintainer_email": "cookbooks@chisamore.com",
   "groupings": {
   },
-  "recipes": {
-    "znc::module_colloquy": "Install colloquy ZNC module.",
-    "znc::package": "Install ZNC package.",
-    "znc::default": "Install and configure ZNC.",
-    "znc::source": "Install and configure ZNC from source."
+  "description": "Installs/Configures ZNC IRC bouncer",
+  "recommendations": {
   },
   "attributes": {
+    "znc/modules_enabled": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "admin",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "description": "The ZNC modules to enable globally.",
+      "display_name": "ZNC Modules Enabled."
+    },
     "znc/group": {
       "required": "optional",
       "calculated": false,
@@ -26,8 +34,8 @@
       "recipes": [
 
       ],
-      "display_name": "ZNC System Group",
-      "description": "The name of the system group under which ZNC will be run"
+      "description": "The name of the system group under which ZNC will be run",
+      "display_name": "ZNC System Group"
     },
     "znc/user": {
       "required": "optional",
@@ -40,8 +48,22 @@
       "recipes": [
 
       ],
-      "display_name": "ZNC System User",
-      "description": "The name of the system user under which ZNC will be run"
+      "description": "The name of the system user under which ZNC will be run",
+      "display_name": "ZNC System User"
+    },
+    "znc/foreground": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": null,
+      "type": "string",
+      "recipes": [
+
+      ],
+      "description": "Enable/disable foreground of the ZNC service process.",
+      "display_name": "ZNC Foreground Mode"
     },
     "znc/module_dir": {
       "required": "optional",
@@ -54,8 +76,8 @@
       "recipes": [
 
       ],
-      "display_name": "ZNC Module Dir",
-      "description": "Directory where ZNC modules will be stored"
+      "description": "Directory where ZNC modules will be stored",
+      "display_name": "ZNC Module Dir"
     },
     "znc/data_dir": {
       "required": "optional",
@@ -68,8 +90,22 @@
       "recipes": [
 
       ],
-      "display_name": "ZNC Data Dir",
-      "description": "Directory where ZNC data will be stored"
+      "description": "Directory where ZNC data will be stored",
+      "display_name": "ZNC Data Dir"
+    },
+    "znc/use_screen_session": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": null,
+      "type": "string",
+      "recipes": [
+
+      ],
+      "description": "Enable/disable starts/stops of the ZNC service in a screen session.",
+      "display_name": "ZNC Run in Screen"
     },
     "znc/install_method": {
       "required": "optional",
@@ -83,8 +119,8 @@
       "recipes": [
 
       ],
-      "display_name": "ZNC Install Method",
-      "description": "The installation source for znc, either source or package"
+      "description": "The installation source for znc, either source or package",
+      "display_name": "ZNC Install Method"
     },
     "znc/user_dir": {
       "required": "optional",
@@ -97,8 +133,8 @@
       "recipes": [
 
       ],
-      "display_name": "ZNC User Dir",
-      "description": "Directory where ZNC users will be stored"
+      "description": "Directory where ZNC users will be stored",
+      "display_name": "ZNC User Dir"
     },
     "znc/log_dir": {
       "required": "optional",
@@ -111,8 +147,8 @@
       "recipes": [
 
       ],
-      "display_name": "ZNC Log Dir",
-      "description": "Directory where ZNC logs will be stored"
+      "description": "Directory where ZNC logs will be stored",
+      "display_name": "ZNC Log Dir"
     },
     "znc/conf_dir": {
       "required": "optional",
@@ -125,11 +161,23 @@
       "recipes": [
 
       ],
-      "display_name": "ZNC Config Dir",
-      "description": "Directory where ZNC configuration will be stored"
+      "description": "Directory where ZNC configuration will be stored",
+      "display_name": "ZNC Config Dir"
+    },
+    "znc/debug": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": null,
+      "type": "string",
+      "recipes": [
+
+      ],
+      "description": "Enable/disable debugging of ZNC service start and process.",
+      "display_name": "ZNC Debug Mode"
     }
-  },
-  "recommendations": {
   },
   "platforms": {
     "debian": [
@@ -139,17 +187,30 @@
 
     ]
   },
-  "version": "0.0.1",
   "suggestions": {
   },
-  "description": "Installs/Configures ZNC IRC bouncer",
   "dependencies": {
     "build-essential": [
 
     ]
   },
-  "long_description": "Description\n===========\n\nInstalls and configures ZNC, an IRC bouncer.\n\nRequirements\n============\n\nPlatform\n--------\n\n* Debian, Ubuntu\n\nUsage\n=====\n\ndefault\n-------\n\nInclude the default recipe in a run list, to get `znc`.  By default `znc` is installed from packages but this can be changed by using the `install_method` attribute.\n\npackage\n-------\n\nThis recipe installs ZNC from packages.\n\nsource\n------\n\nThis recipe installs ZNC from source.\n\nLicense and Author\n==================\n\nAuthor:: Seth Chisamore (<schisamo@gmail.com>)\n\nCopyright:: 2011, Seth Chisamore\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
-  "name": "znc",
+  "version": "0.0.1",
   "conflicting": {
-  }
+  },
+  "name": "znc",
+  "long_description": "Description\n===========\n\nInstalls and configures ZNC, an IRC bouncer.\n\nRequirements\n============\n\nPlatform\n--------\n\n* Debian, Ubuntu\n\nUsage\n=====\n\ndefault\n-------\n\nInclude the default recipe in a run list, to get `znc`.  By default `znc` is installed from packages but this can be changed by using the `install_method` attribute.\n\npackage\n-------\n\nThis recipe installs ZNC from packages.\n\nsource\n------\n\nThis recipe installs ZNC from source.\n\nLicense and Author\n==================\n\nAuthor:: Seth Chisamore (<schisamo@gmail.com>)\n\nCopyright:: 2011, Seth Chisamore\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "recipes": {
+    "znc::module_colloquy": "Install and enable Colloquy ZNC module.",
+    "znc::modules": "Enables desired ZNC modules.",
+    "znc::package": "Installs ZNC from package.",
+    "znc::add_user": "Add a ZNC user.",
+    "znc::configure": "Configures the ZNC main configuration.",
+    "znc::install": "Install ZNC.",
+    "znc::change_user_password": "Changes a ZNC user's password.",
+    "znc::default": "Install and configure ZNC.",
+    "znc::source": "Installs ZNC from source."
+  },
+  "providing": {
+  },
+  "license": "Apache 2.0"
 }
