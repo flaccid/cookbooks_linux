@@ -18,7 +18,11 @@
 case node.platform
   when 'macosx'
     # TODO: install via homebrew
+    log "OS X not yet supported."
   else
+    package "openssl" do
+      action: install
+    end
     znc_pkgs = value_for_platform(
       [ "debian","ubuntu" ] => {
         "default" => %w{ znc znc-dev znc-extra }# znc-webadmin}
@@ -28,6 +32,6 @@ case node.platform
     znc_pkgs.each do |pkg|
       package pkg do
         action :install
-    end
+      end
   end
 end
