@@ -15,6 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+package "coreutils" do
+  action: install
+end
+
 if !Chef::Config.solo
   users = search(:users, 'groups:znc')
 else
@@ -42,7 +46,8 @@ service "znc"
 
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
-cmd = "echo -n \"#{pass_plain}#{salt}\" | openssl dgst -sha256" 
+cmd = "echo \"#{pass_plain}#{salt}\" | sha256sum | awk '{ print $1 }'"
+#cmd = "echo -n \"#{pass_plain}#{salt}\" | openssl dgst -sha256" 
 pass_hash = `#{cmd}`
 pass = "sha256##{pass_hash}##{salt}#"
 
