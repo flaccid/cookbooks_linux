@@ -86,24 +86,24 @@ attribute "znc/debug",
   :description => "Enable/disable debugging of ZNC service start and process.",
   :default => 'no',
   :choice => ['yes', 'no'],
-  :recipes => ["znc::configure"]
+  :recipes => ["znc::configure", "znc::install_service"]
   
 attribute "znc/foreground",
   :display_name => "ZNC Foreground Mode",
   :description => "Enable/disable foreground of the ZNC service process.",
   :default => 'no',
   :choice => ['yes', 'no'],
-  :recipes => ["znc::install"]
+  :recipes => ["znc::install_service"]
   
 attribute "znc/use_screen_session",
   :display_name => "ZNC Run in Screen",
   :description => "Enable/disable starts/stops of the ZNC service in a screen session.",
   :default => 'no',
   :choice => ['yes', 'no'],
-  :recipes => ["znc::install"]
+  :recipes => ["znc::install_service"]
   
 attribute "znc/users",
-  :display_name => "ZNC users",
+  :display_name => "ZNC Users",
   :description => "Initial users to create when configuring ZNC.",
   :default => 'znc',
   :recipes => ["znc::configure"]

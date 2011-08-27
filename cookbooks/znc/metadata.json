@@ -79,7 +79,7 @@
       "default": "no",
       "type": "string",
       "recipes": [
-        "znc::install"
+        "znc::install_service"
       ],
       "description": "Enable/disable foreground of the ZNC service process.",
       "display_name": "ZNC Foreground Mode"
@@ -141,7 +141,7 @@
       "default": "no",
       "type": "string",
       "recipes": [
-        "znc::install"
+        "znc::install_service"
       ],
       "description": "Enable/disable starts/stops of the ZNC service in a screen session.",
       "display_name": "ZNC Run in Screen"
@@ -219,7 +219,7 @@
         "znc::configure"
       ],
       "description": "Initial users to create when configuring ZNC.",
-      "display_name": "ZNC users"
+      "display_name": "ZNC Users"
     },
     "znc/debug": {
       "required": "optional",
@@ -231,7 +231,8 @@
       "default": "no",
       "type": "string",
       "recipes": [
-        "znc::configure"
+        "znc::configure",
+        "znc::install_service"
       ],
       "description": "Enable/disable debugging of ZNC service start and process.",
       "display_name": "ZNC Debug Mode"
