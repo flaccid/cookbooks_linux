@@ -25,49 +25,42 @@ attribute "znc/user",
   :display_name => "ZNC System User",
   :description => "The name of the system user under which ZNC will be run.",
   :default => "znc",
-  :required => "required",
   :recipes => ["znc::install"]
   
 attribute "znc/group",
   :display_name => "ZNC System Group",
   :description => "The name of the system group under which ZNC will be run",
   :default => "znc",
-  :required => "required",
   :recipes => ["znc::install"]
   
 attribute "znc/data_dir",
   :display_name => "ZNC Data Dir",
   :description => "Directory where ZNC data will be stored",
   :default => "/etc/znc",
-  :required => "required",
   :recipes => ["znc::install"]
   
 attribute "znc/conf_dir",
   :display_name => "ZNC Config Dir",
   :description => "Directory where ZNC configuration will be stored",
   :default => "/etc/znc/configs",
-  :required => "required",
   :recipes => ["znc::install"]
   
 attribute "znc/log_dir",
   :display_name => "ZNC Log Dir",
   :description => "Directory where ZNC logs will be stored",
-  :default => "/etc/znc/moddata/adminlog",
-  :required => "required",
+  :default => "/var/log/znc",
   :recipes => ["znc::install"]
 
 attribute "znc/module_dir",
   :display_name => "ZNC Module Dir",
   :description => "Directory where ZNC modules will be stored",
   :default => "/etc/znc/modules",
-  :required => "required",
   :recipes => ["znc::modules", "znc:module_colloquy"]
   
 attribute "znc/user_dir",
   :display_name => "ZNC User Dir",
   :description => "Directory where ZNC users will be stored",
   :default => "/etc/znc/users",
-  :required => "required",
   :recipes => ["znc::install"]
   
 attribute "znc/install_method",
@@ -75,7 +68,6 @@ attribute "znc/install_method",
   :description => "The installation source for znc, either source or package",
   :choice => ["package","source"],
   :default => "package",
-  :required => "required",
   :recipes => ["znc::install", "znc::package", "znc::source"]
     
 attribute "znc/modules_enabled",

@@ -24,7 +24,7 @@
       "display_name": "ZNC Modules Enabled."
     },
     "znc/group": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 
@@ -38,7 +38,7 @@
       "display_name": "ZNC System Group"
     },
     "znc/user": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 
@@ -67,7 +67,7 @@
       "display_name": "ZNC Foreground Mode"
     },
     "znc/module_dir": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 
@@ -82,7 +82,7 @@
       "display_name": "ZNC Module Dir"
     },
     "znc/data_dir": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 
@@ -111,7 +111,7 @@
       "display_name": "ZNC Run in Screen"
     },
     "znc/install_method": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
         "package",
@@ -128,7 +128,7 @@
       "display_name": "ZNC Install Method"
     },
     "znc/user_dir": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 
@@ -142,12 +142,12 @@
       "display_name": "ZNC User Dir"
     },
     "znc/log_dir": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 
       ],
-      "default": "/etc/znc/moddata/adminlog",
+      "default": "/var/log/znc",
       "type": "string",
       "recipes": [
         "znc::install"
@@ -156,7 +156,7 @@
       "display_name": "ZNC Log Dir"
     },
     "znc/conf_dir": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 
