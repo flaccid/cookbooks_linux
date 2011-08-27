@@ -19,18 +19,10 @@ package "coreutils" do
   action: install
 end
 
-if !Chef::Config.solo
-  users = search(:users, 'groups:znc')
-else
-  users = node[:znc][:users]
-end
+user node['znc']['system_user']
+group node['znc']['system_group']
 
 # set permissions on configuration files
-
-user node['znc']['user']
-
-group node['znc']['group']
-
 [ node['znc']['data_dir'], 
   node['znc']['conf_dir'],
   node['znc']['module_dir'],
@@ -43,6 +35,12 @@ group node['znc']['group']
 end
 
 service "znc"
+
+if !Chef::Config.solo
+  users = search(:users, 'groups:znc')
+else
+  users = node[:znc][:users]
+end
 
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
@@ -60,7 +58,7 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   variables(
     :admin_user => node.znc.admin_user,
     :admin_password => "#{pass}",
-    :admin_server => "irc.freenode.net 6667"
+    :admin_server => "irc.freenode.net 6667",
     :users => users,  
     :modules => node.znc.modules,
     :data_dir => node.znc.data_dir,
