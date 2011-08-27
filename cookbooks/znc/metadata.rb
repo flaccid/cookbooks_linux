@@ -75,11 +75,11 @@ attribute "znc/install_method",
   :default => "package",
   :recipes => ["znc::install"]
     
-attribute "znc/modules_enabled",
-  :display_name => "ZNC Modules Enabled",
-  :description => "The ZNC modules to enable globally.",
-  :default => "admin",
-  :recipes => ["znc::configure", "znc::modules"]
+#attribute "znc/modules",
+#  :display_name => "ZNC Modules Enabled",
+#  :description => "The ZNC modules to enable globally.",
+#  :default => "admin",
+#  :recipes => ["znc::configure", "znc::modules"]
 
 attribute "znc/debug",
   :display_name => "ZNC Debug Mode",

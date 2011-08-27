@@ -23,21 +23,6 @@
       "description": "ZNC skin.",
       "display_name": "ZNC Skin"
     },
-    "znc/modules_enabled": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-
-      ],
-      "default": "admin",
-      "type": "string",
-      "recipes": [
-        "znc::configure",
-        "znc::modules"
-      ],
-      "description": "The ZNC modules to enable globally.",
-      "display_name": "ZNC Modules Enabled"
-    },
     "znc/group": {
       "required": "optional",
       "calculated": false,
