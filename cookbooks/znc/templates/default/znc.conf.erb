@@ -7,12 +7,12 @@
 // Also check http://en.znc.in/wiki/Configuration
 
 AnonIPLimit  = 10
-MaxBufferSize= <%= node['znc']['max_buffer_size'] %>
-SSLCertFile  = <%= node['znc']['data_dir'] %>/znc.pem
-Listener4    = <%= node[:znc][:port] %>
+MaxBufferSize= <%= @max_buffer_size %>
+SSLCertFile  = <%= @data_dir %>/znc.pem
+Listener4    = <%= @port %>
 ConnectDelay = 5
 ServerThrottle = 30
-Skin         = <%= node['znc']['skin'] %>
+Skin         = <%= @skin %>
 StatusPrefix = *
 <% @modules.each do |mod,params| -%>
 LoadModule   = <%= "#{mod} #{params}".strip  %>
