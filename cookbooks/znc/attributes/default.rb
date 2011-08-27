@@ -19,8 +19,8 @@
 
 default['znc']['install_method'] = 'package'
 
-set['znc']['user'] = 'znc'
-set['znc']['group'] = 'znc'
+set['znc']['system_user'] = 'znc'
+set['znc']['system_group'] = 'znc'
 
 case node["platform"]
 when "macosx"
