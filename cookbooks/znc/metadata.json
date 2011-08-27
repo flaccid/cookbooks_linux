@@ -216,6 +216,7 @@
     "znc::modules": "Enables desired ZNC modules.",
     "znc::package": "Installs ZNC from package.",
     "znc::add_user": "Add a ZNC user.",
+    "znc::install_service": "Installs the ZNC service.",
     "znc::configure": "Configures the ZNC main configuration.",
     "znc::install": "Install ZNC.",
     "znc::change_user_password": "Changes a ZNC user's password.",

@@ -13,6 +13,7 @@ end
 
 recipe "znc::default","Install and configure ZNC."
 recipe "znc::install","Install ZNC."
+recipe "znc::install_service","Installs the ZNC service."
 recipe "znc::configure","Configures the ZNC main configuration."
 recipe "znc::add_user","Add a ZNC user."
 recipe "znc::change_user_password","Changes a ZNC user's password."
