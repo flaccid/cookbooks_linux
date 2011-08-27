@@ -118,14 +118,14 @@ attribute "znc/max_buffer_size",
 attribute "znc/port",
   :display_name => "ZNC IPv4 Listen Port",
   :description => "ZNC daemon listen port.",
-  :default => ['+7777'],
+  :default => '+7777',
   :choice => ['+7777'],
   :recipes => ["znc::configure"]
 
 attribute "znc/skin",
   :display_name => "ZNC Skin",
   :description => "ZNC skin.",
-  :default => ["dark-clouds"],
+  :default => "dark-clouds",
   :choice => ["dark-clouds"],
   :recipes => ["znc::configure"]
   
