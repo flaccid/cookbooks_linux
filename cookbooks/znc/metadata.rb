@@ -105,24 +105,27 @@ attribute "znc/use_screen_session",
 attribute "znc/users",
   :display_name => "ZNC users",
   :description => "Initial users to create when configuring ZNC.",
-  :require => 'required',
+  :default => 'znc',
   :recipes => ["znc::configure"]
   
 attribute "znc/max_buffer_size",
   :display_name => "ZNC Max Buffer Size",
   :description => "ZNC maximum buffer size.",
+  :default => '500',
   :choice => ['500', '1024'],
   :recipes => ["znc::configure"]
   
 attribute "znc/port",
   :display_name => "ZNC IPv4 Listen Port",
   :description => "ZNC daemon listen port.",
+  :default => ['+7777'],
   :choice => ['+7777'],
   :recipes => ["znc::configure"]
 
 attribute "znc/skin",
   :display_name => "ZNC Skin",
   :description => "ZNC skin.",
+  :default => ["dark-clouds"],
   :choice => ["dark-clouds"],
   :recipes => ["znc::configure"]
   

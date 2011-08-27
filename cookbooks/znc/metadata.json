@@ -15,6 +15,9 @@
       "choice": [
         "dark-clouds"
       ],
+      "default": [
+        "dark-clouds"
+      ],
       "type": "string",
       "recipes": [
         "znc::configure"
@@ -73,6 +76,9 @@
       "required": "optional",
       "calculated": false,
       "choice": [
+        "+7777"
+      ],
+      "default": [
         "+7777"
       ],
       "type": "string",
@@ -136,6 +142,7 @@
         "500",
         "1024"
       ],
+      "default": "500",
       "type": "string",
       "recipes": [
         "znc::configure"
@@ -225,11 +232,11 @@
       "choice": [
 
       ],
+      "default": "znc",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
-      "require": "required",
       "description": "Initial users to create when configuring ZNC.",
       "display_name": "ZNC users"
     },
