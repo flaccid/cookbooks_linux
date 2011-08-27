@@ -24,23 +24,6 @@ include_recipe "znc::install_service"
 # configure znc
 include_recipe "znc::configure"
 
-# set permissions on configuration files
-
-user node['znc']['user']
-
-group node['znc']['group']
-
-[ node['znc']['data_dir'], 
-  node['znc']['conf_dir'],
-  node['znc']['module_dir'],
-  node['znc']['users_dir']
-].each do |dir|
-  directory dir do
-    owner node['znc']['user']
-    group node['znc']['group']
-  end
-end
-
 # generate server SSL certificate
 include_recipe "znc::generate_cert"
 
