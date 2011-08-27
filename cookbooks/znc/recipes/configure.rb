@@ -17,11 +17,21 @@
 
 service "znc"
 
+if !Chef::Config.solo
+  users = search(:users, 'groups:znc')
+else
+  users = node[:znc][:users]
+end
+
 # render znc.conf
 template "#{node.znc.data_dir}/configs/znc.conf" do
   source "znc.conf.erb"
   mode 0600
   owner node.znc.user
   group node.znc.group
+  variables(
+    :users => users,  
+    :modules => node.znc.modules
+  )
   notifies :start, "service[znc]", :immediately
 end
