@@ -23,61 +23,72 @@ recipe "znc::source","Installs ZNC from source."
 
 attribute "znc/user",
   :display_name => "ZNC System User",
-  :description => "The name of the system user under which ZNC will be run",
-  :default => "znc"
-
+  :description => "The name of the system user under which ZNC will be run.",
+  :default => "znc",
+  :recipes => ["znc::install"]
+  
 attribute "znc/group",
   :display_name => "ZNC System Group",
   :description => "The name of the system group under which ZNC will be run",
-  :default => "znc"
-
+  :default => "znc",
+  :recipes => ["znc::install"]
+  
 attribute "znc/data_dir",
   :display_name => "ZNC Data Dir",
   :description => "Directory where ZNC data will be stored",
-  :default => "/etc/znc"
-
+  :default => "/etc/znc",
+  :recipes => ["znc::install"]
+  
 attribute "znc/conf_dir",
   :display_name => "ZNC Config Dir",
   :description => "Directory where ZNC configuration will be stored",
-  :default => "/etc/znc/configs"
-
+  :default => "/etc/znc/configs",
+  :recipes => ["znc::install"]
+  
 attribute "znc/log_dir",
   :display_name => "ZNC Log Dir",
   :description => "Directory where ZNC logs will be stored",
-  :default => "/etc/znc/moddata/adminlog"
+  :default => "/etc/znc/moddata/adminlog",
+  :recipes => ["znc::install"]
 
 attribute "znc/module_dir",
   :display_name => "ZNC Module Dir",
   :description => "Directory where ZNC modules will be stored",
-  :default => "/etc/znc/modules"
-
+  :default => "/etc/znc/modules",
+  :recipes => ["znc::modules", "znc:module_colloquy"]
+  
 attribute "znc/user_dir",
   :display_name => "ZNC User Dir",
   :description => "Directory where ZNC users will be stored",
-  :default => "/etc/znc/users"
-
+  :default => "/etc/znc/users",
+  :recipes => ["znc::install"]
+  
 attribute "znc/install_method",
   :display_name => "ZNC Install Method",
   :description => "The installation source for znc, either source or package",
   :choice => ["package","source"],
-  :default => "package"
-  
+  :default => "package",
+  :recipes => ["znc::install"]
+    
 attribute "znc/modules_enabled",
   :display_name => "ZNC Modules Enabled.",
   :description => "The ZNC modules to enable globally.",
-  :default => "admin"
-  
+  :default => "admin",
+  :recipes => ["znc::modules"]
+
 attribute "znc/debug",
   :display_name => "ZNC Debug Mode",
   :description => "Enable/disable debugging of ZNC service start and process.",
-  :default => nil
-
+  :choice => ['yes', 'no']
+  
 attribute "znc/foreground",
   :display_name => "ZNC Foreground Mode",
   :description => "Enable/disable foreground of the ZNC service process.",
-  :default => nil
-
+  :choice => ['yes', 'no'],
+  :recipes => ["znc::install"]
+  
 attribute "znc/use_screen_session",
   :display_name => "ZNC Run in Screen",
   :description => "Enable/disable starts/stops of the ZNC service in a screen session.",
-  :default => nil
+  :choice => ['yes', 'no'],
+  :recipes => ["znc::install"]

@@ -37,3 +37,7 @@ default['znc']['port']            = "+7777"
 default['znc']['skin']            = "dark-clouds"
 default['znc']['max_buffer_size'] = 500
 default['znc']['modules']         = %w{ webadmin adminlog }
+
+default['znc']['debug']               = false
+default['znc']['foreground']          = false
+default['znc']['use_screen_session']  = false

@@ -18,7 +18,7 @@
       "default": "admin",
       "type": "string",
       "recipes": [
-
+        "znc::modules"
       ],
       "description": "The ZNC modules to enable globally.",
       "display_name": "ZNC Modules Enabled."
@@ -32,7 +32,7 @@
       "default": "znc",
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
       "description": "The name of the system group under which ZNC will be run",
       "display_name": "ZNC System Group"
@@ -46,21 +46,21 @@
       "default": "znc",
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
-      "description": "The name of the system user under which ZNC will be run",
+      "description": "The name of the system user under which ZNC will be run.",
       "display_name": "ZNC System User"
     },
     "znc/foreground": {
       "required": "optional",
       "calculated": false,
       "choice": [
-
+        "yes",
+        "no"
       ],
-      "default": null,
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
       "description": "Enable/disable foreground of the ZNC service process.",
       "display_name": "ZNC Foreground Mode"
@@ -74,7 +74,8 @@
       "default": "/etc/znc/modules",
       "type": "string",
       "recipes": [
-
+        "znc::modules",
+        "znc:module_colloquy"
       ],
       "description": "Directory where ZNC modules will be stored",
       "display_name": "ZNC Module Dir"
@@ -88,7 +89,7 @@
       "default": "/etc/znc",
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
       "description": "Directory where ZNC data will be stored",
       "display_name": "ZNC Data Dir"
@@ -97,12 +98,12 @@
       "required": "optional",
       "calculated": false,
       "choice": [
-
+        "yes",
+        "no"
       ],
-      "default": null,
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
       "description": "Enable/disable starts/stops of the ZNC service in a screen session.",
       "display_name": "ZNC Run in Screen"
@@ -117,7 +118,7 @@
       "default": "package",
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
       "description": "The installation source for znc, either source or package",
       "display_name": "ZNC Install Method"
@@ -131,7 +132,7 @@
       "default": "/etc/znc/users",
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
       "description": "Directory where ZNC users will be stored",
       "display_name": "ZNC User Dir"
@@ -145,7 +146,7 @@
       "default": "/etc/znc/moddata/adminlog",
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
       "description": "Directory where ZNC logs will be stored",
       "display_name": "ZNC Log Dir"
@@ -159,7 +160,7 @@
       "default": "/etc/znc/configs",
       "type": "string",
       "recipes": [
-
+        "znc::install"
       ],
       "description": "Directory where ZNC configuration will be stored",
       "display_name": "ZNC Config Dir"
@@ -168,9 +169,9 @@
       "required": "optional",
       "calculated": false,
       "choice": [
-
+        "yes",
+        "no"
       ],
-      "default": null,
       "type": "string",
       "recipes": [
 
