@@ -19,13 +19,14 @@
 
 default['znc']['install_method'] = 'package'
 
+set['znc']['user'] = 'znc'
+set['znc']['group'] = 'znc'
+
 case node["platform"]
 when "macosx"
   set['znc']['data_dir'] = '$HOME/.znc'
 else
   set['znc']['data_dir'] = '/etc/znc'
-  set['znc']['user'] = 'znc'
-  set['znc']['group'] = 'znc'
 end
 
 default['znc']['conf_dir']        = "#{znc['data_dir']}/configs"
