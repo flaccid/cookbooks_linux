@@ -16,10 +16,10 @@
 # limitations under the License.
 
 # render znc.conf
-template "#{node['znc']['data_dir']}/configs/znc.conf" do
+template "#{node.znc.data_dir}/configs/znc.conf" do
   source "znc.conf.erb"
   mode 0600
-  owner node['znc']['user']
-  group node['znc']['group']
+  owner node.znc.user
+  group node.znc.group
   notifies :start, "service[znc]", :immediately
 end
