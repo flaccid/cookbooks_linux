@@ -96,7 +96,7 @@
       "type": "string",
       "recipes": [
         "znc::default",
-        "znc::install",
+        "znc::configure",
         "znc::generate_cert"
       ],
       "description": "Directory where ZNC data will be stored",
