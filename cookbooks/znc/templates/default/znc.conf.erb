@@ -1,16 +1,16 @@
 Listen     = <%= @port %>
 
-<User znc>
-	Pass       = sha256#6c6bbe2062edeef0ca12e277ac1838ec2d9954b3ab50b00c371810180b049d36#Zv.lAhd,E1bokfmPh+Nc#
-	Admin      = false
-	Nick       = znc
-	AltNick    = znc_
-	Ident      = znc
+<User <%= @admin_user %>>
+	Pass       =  <%= @admin_password %>
+	Admin      = true
+	Nick       = <%= @admin_user %>
+	AltNick    = <%= @admin_user %>_
+	Ident      = <%= @admin_user %>
 	RealName   = Got ZNC?
 	Buffer     = 50
 	KeepBuffer = false
 	ChanModes  = +stn
-	Server     = irc.freenode.net 6667 
-	<Chan #social>
+	Server     = <%= @admin_server %>
+	<Chan #znc>
 	</Chan>
 </User>
