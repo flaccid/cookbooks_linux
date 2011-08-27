@@ -214,14 +214,17 @@
   "recipes": {
     "znc::module_colloquy": "Install and enable Colloquy ZNC module.",
     "znc::modules": "Enables desired ZNC modules.",
+    "znc::restart": "Restarts the ZNC daemon.",
     "znc::package": "Installs ZNC from package.",
     "znc::add_user": "Add a ZNC user.",
     "znc::install_service": "Installs the ZNC service.",
     "znc::configure": "Configures the ZNC main configuration.",
     "znc::install": "Install ZNC.",
     "znc::change_user_password": "Changes a ZNC user's password.",
+    "znc::stop": "Stops the ZNC daemon.",
     "znc::default": "Install and configure ZNC.",
-    "znc::source": "Installs ZNC from source."
+    "znc::source": "Installs ZNC from source.",
+    "znc::start": "Starts the ZNC daemon."
   },
   "providing": {
   },

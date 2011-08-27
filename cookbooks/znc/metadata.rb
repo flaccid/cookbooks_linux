@@ -13,6 +13,9 @@ end
 
 recipe "znc::default","Install and configure ZNC."
 recipe "znc::install","Install ZNC."
+recipe "znc::start","Starts the ZNC daemon."
+recipe "znc::stop","Stops the ZNC daemon."
+recipe "znc::restart","Restarts the ZNC daemon."
 recipe "znc::install_service","Installs the ZNC service."
 recipe "znc::configure","Configures the ZNC main configuration."
 recipe "znc::add_user","Add a ZNC user."
