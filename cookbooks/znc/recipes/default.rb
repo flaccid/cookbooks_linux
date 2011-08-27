@@ -43,7 +43,7 @@ end
 include_recipe "znc::generate_cert"
 
 # add a znc user
-include_recipe "znc::add_user"
+#include_recipe "znc::add_user"
 
 # enable/disable modules
 include_recipe "znc::modules"
