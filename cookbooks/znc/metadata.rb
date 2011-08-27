@@ -81,7 +81,8 @@ attribute "znc/debug",
   :display_name => "ZNC Debug Mode",
   :description => "Enable/disable debugging of ZNC service start and process.",
   :default => 'no',
-  :choice => ['yes', 'no']
+  :choice => ['yes', 'no'],
+  :recipes => ["znc::configure"]
   
 attribute "znc/foreground",
   :display_name => "ZNC Foreground Mode",

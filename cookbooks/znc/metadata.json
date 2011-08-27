@@ -185,7 +185,7 @@
       "default": "no",
       "type": "string",
       "recipes": [
-
+        "znc::configure"
       ],
       "description": "Enable/disable debugging of ZNC service start and process.",
       "display_name": "ZNC Debug Mode"
