@@ -15,13 +15,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-service "znc"
-
 if !Chef::Config.solo
   users = search(:users, 'groups:znc')
 else
   users = node[:znc][:users]
 end
+
+# set permissions on configuration files
+
+user node['znc']['user']
+
+group node['znc']['group']
+
+[ node['znc']['data_dir'], 
+  node['znc']['conf_dir'],
+  node['znc']['module_dir'],
+  node['znc']['users_dir']
+].each do |dir|
+  directory dir do
+    owner node['znc']['user']
+    group node['znc']['group']
+  end
+end
+
+service "znc"
 
 # render znc.conf
 template "#{node.znc.data_dir}/configs/znc.conf" do
