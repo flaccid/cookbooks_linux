@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+service "znc"
+
 # render znc.conf
 template "#{node.znc.data_dir}/configs/znc.conf" do
   source "znc.conf.erb"
