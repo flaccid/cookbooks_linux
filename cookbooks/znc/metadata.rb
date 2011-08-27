@@ -26,13 +26,19 @@ recipe "znc::package","Installs ZNC from package."
 recipe "znc::source","Installs ZNC from source."
 recipe "znc::generate_cert","Generates x509 certificate for ZNC."
 
-attribute "znc/user",
+attribute "znc/admin_user",
+  :display_name => "ZNC Admin User",
+  :description => "The name of the ZNC admin user.",
+  :default => "znc",
+  :recipes => ["znc::configure"]
+
+attribute "znc/system_user",
   :display_name => "ZNC System User",
   :description => "The name of the system user under which ZNC will be run.",
   :default => "znc",
   :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
   
-attribute "znc/group",
+attribute "znc/system_group",
   :display_name => "ZNC System Group",
   :description => "The name of the system group under which ZNC will be run",
   :default => "znc",

@@ -23,7 +23,7 @@
       "description": "ZNC skin.",
       "display_name": "ZNC Skin"
     },
-    "znc/group": {
+    "znc/admin_user": {
       "required": "optional",
       "calculated": false,
       "choice": [
@@ -32,28 +32,10 @@
       "default": "znc",
       "type": "string",
       "recipes": [
-        "znc::default",
-        "znc::install",
-        "znc::generate_cert"
+        "znc::configure"
       ],
-      "description": "The name of the system group under which ZNC will be run",
-      "display_name": "ZNC System Group"
-    },
-    "znc/user": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-
-      ],
-      "default": "znc",
-      "type": "string",
-      "recipes": [
-        "znc::default",
-        "znc::install",
-        "znc::generate_cert"
-      ],
-      "description": "The name of the system user under which ZNC will be run.",
-      "display_name": "ZNC System User"
+      "description": "The name of the ZNC admin user.",
+      "display_name": "ZNC Admin User"
     },
     "znc/port": {
       "required": "optional",
@@ -176,6 +158,38 @@
       ],
       "description": "Directory where ZNC users will be stored",
       "display_name": "ZNC User Dir"
+    },
+    "znc/system_user": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "znc",
+      "type": "string",
+      "recipes": [
+        "znc::default",
+        "znc::install",
+        "znc::generate_cert"
+      ],
+      "description": "The name of the system user under which ZNC will be run.",
+      "display_name": "ZNC System User"
+    },
+    "znc/system_group": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "znc",
+      "type": "string",
+      "recipes": [
+        "znc::default",
+        "znc::install",
+        "znc::generate_cert"
+      ],
+      "description": "The name of the system group under which ZNC will be run",
+      "display_name": "ZNC System Group"
     },
     "znc/log_dir": {
       "required": "optional",
