@@ -17,7 +17,7 @@
 
 service "znc"
 
-include_recipe("znc::install_service")
+include_recipe "znc::install_service"
 
 package "coreutils" do
   action :install
@@ -73,7 +73,7 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
     :max_buffer_size => node.znc.max_buffer_size,
     :port => node.znc.port
   )
-  notifies :restart, "service[znc]", :immediately
+#  notifies :restart, "service[znc]", :immediately
 end
 
 # generate server SSL certificate
