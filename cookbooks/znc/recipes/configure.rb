@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+service "znc"
+
 include_recipe("znc::install_service")
 
 package "coreutils" do
