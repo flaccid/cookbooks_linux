@@ -28,6 +28,9 @@ case node.platform
       [ "debian","ubuntu" ] => {
         "default" => %w{ znc znc-dev znc-extra }# znc-webadmin}
       },
+      [ "centos" ] => {
+        "default" =>  %w{ znc znc-devel znc-extra znc-modperl znc-modtcl }
+      },
       "default" => %w{ znc znc-dev znc-extra }
     )
     znc_pkgs.each do |pkg|
