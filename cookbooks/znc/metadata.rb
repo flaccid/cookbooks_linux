@@ -55,6 +55,12 @@ attribute "znc/connect_delay",
   :default => "3",
   :recipes => ["znc::configure"]
 
+attribute "znc/pid_file",
+  :display_name => "ZNC PID File",
+  :description => "The PID file for ZNC.",
+  :default => "/var/lib/znc.pid",
+  :recipes => ["znc::configure"]
+
 attribute "znc/motd",
   :display_name => "ZNC MOTD",
   :description => "The 'message of the day' which is sent to clients on connect via notice from *status. Can be specified multiple times.",

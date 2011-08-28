@@ -46,6 +46,9 @@ default['znc']['skin']            = "dark-clouds"
 default['znc']['max_buffer_size'] = 500
 default['znc']['modules']         = %w{ webadmin adminlog }
 default['znc']['users']           = %w{ znc }
+default['znc']['pid_file']        = '/var/run/znc.pid'
+default['znc']['status_prefix']   = 'znc'
+default['znc']['server_throttle'] = '3'
 
 default['znc']['debug']               = false
 default['znc']['foreground']          = false

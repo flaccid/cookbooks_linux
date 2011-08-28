@@ -270,6 +270,20 @@
       "description": "The name of the system user under which ZNC will be run.",
       "display_name": "ZNC System User"
     },
+    "znc/pid_file": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "/var/lib/znc.pid",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "The PID file for ZNC.",
+      "display_name": "ZNC PID File"
+    },
     "znc/system_group": {
       "required": "optional",
       "calculated": false,
