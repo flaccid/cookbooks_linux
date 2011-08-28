@@ -18,6 +18,7 @@ recipe "znc::stop","Stops the ZNC daemon."
 recipe "znc::restart","Restarts the ZNC daemon."
 recipe "znc::install_service","Installs the ZNC service."
 recipe "znc::install_git_devel","Installs ZNC from the git-devel source at GitHub."
+recipe "znc::install_nightly","Installs the nightly source snapshot of ZNC."
 recipe "znc::configure","Configures the ZNC main configuration."
 recipe "znc::add_user","Add a ZNC user."
 recipe "znc::change_user_password","Changes a ZNC user's password."
@@ -26,6 +27,8 @@ recipe "znc::module_colloquy","Install and enable Colloquy ZNC module."
 recipe "znc::package","Installs ZNC from package."
 recipe "znc::source","Installs ZNC from source."
 recipe "znc::generate_cert","Generates x509 certificate for ZNC."
+recipe "znc::backup_config","Backup the ZNC configuration to Git or S3."
+recipe "znc::restore_config","Restore the ZNC configuration to Git or S3."
 
 attribute "znc/configure_options",
   :display_name => "ZNC Compile Options",
