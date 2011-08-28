@@ -29,6 +29,7 @@ end
 
 directory "/usr/src/znc"
   action :create
+end
 
 remote_file "/usr/src/znc/znc-0.200.tar.gz" do
   source "http://znc.in/releases/znc-0.200.tar.gz"
@@ -40,5 +41,4 @@ execute "install_from_source_tarball" do
   #(use --enable-extra to configure (and additionally --enable-tcl for modtcl) to include the whole extra package) 
   #( if you are on a dedicated server and your CPU has more than one core, you can use make -jX where X is the number of CPU cores to speed up compilation)
   command "cd /usr/src/znc && tar -xzvf znc*.*gz && ./configure && make && make install"
-  action :run
 end
