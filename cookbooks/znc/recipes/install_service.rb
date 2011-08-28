@@ -17,7 +17,7 @@
 
 # install znc rc script
 template "/etc/init.d/znc" do
-  source "znc.init.#{platform}.erb"
+  source "znc.init.#{node.platform}.erb"
   owner "root"
   group "root"
   mode "0755"	 	
