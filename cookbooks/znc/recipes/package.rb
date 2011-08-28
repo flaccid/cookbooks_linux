@@ -30,10 +30,10 @@ case node.platform
       },
       "default" => %w{ znc znc-dev znc-extra }
     )
-    znc_pkgs.each do |pkg| {
+    znc_pkgs.each do |pkg|
       package pkg do
         action :install
       end
-    }
+    end
   end
 end
