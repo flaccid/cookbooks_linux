@@ -15,20 +15,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe("znc::install_service")
+
 package "coreutils" do
   action :install
 end
 
-user node['znc']['system_user'] do
+user node.znc.system_user do
   comment "ZNC daemon"
   system true
 do
 
-group node['znc']['system_group'] do
+group node.znc.system_group do
   members ['znc']
 end
-
-service "znc"
 
 # set permissions on configuration files
 [ node['znc']['data_dir'], 
@@ -37,8 +37,8 @@ service "znc"
   node['znc']['users_dir']
 ].each do |dir|
   directory dir do
-    owner node['znc']['system_user']
-    group node['znc']['system_group']
+    owner node.znc.system_user
+    group node.znc.system_group
   end
 end
 
@@ -61,6 +61,7 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   mode 0600
   owner node.znc.system_user
   group node.znc.system_group
+  notifies :start, "service[znc]", :immediately
   variables(
     :admin_user => node.znc.admin_user,
     :admin_password => "#{pass}",
@@ -72,5 +73,4 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
     :max_buffer_size => node.znc.max_buffer_size,
     :port => node.znc.port
   )
-  notifies :start, "service[znc]", :immediately
 end
