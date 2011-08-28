@@ -1,0 +1,45 @@
+{
+  "maintainer": "Opscode, Inc.",
+  "replacing": {
+  },
+  "maintainer_email": "cookbooks@opscode.com",
+  "groupings": {
+  },
+  "description": "Installs C compiler / build tools",
+  "recommendations": {
+  },
+  "attributes": {
+  },
+  "platforms": {
+    "debian": [
+
+    ],
+    "centos": [
+
+    ],
+    "fedora": [
+
+    ],
+    "ubuntu": [
+
+    ],
+    "redhat": [
+
+    ]
+  },
+  "suggestions": {
+  },
+  "dependencies": {
+  },
+  "version": "1.0.0",
+  "conflicting": {
+  },
+  "name": "build-essential",
+  "long_description": "",
+  "recipes": {
+    "build-essential": "Installs C compiler and build tools on Linux"
+  },
+  "providing": {
+  },
+  "license": "Apache 2.0"
+}
