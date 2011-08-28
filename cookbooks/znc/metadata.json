@@ -37,6 +37,19 @@
       "description": "The name of the ZNC admin user.",
       "display_name": "ZNC Admin User"
     },
+    "znc/admin_password": {
+      "required": "required",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "The password of the ZNC admin user.",
+      "display_name": "ZNC Admin Password"
+    },
     "znc/port": {
       "required": "optional",
       "calculated": false,

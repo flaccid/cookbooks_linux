@@ -31,6 +31,12 @@ attribute "znc/admin_user",
   :description => "The name of the ZNC admin user.",
   :default => "znc-admin",
   :recipes => ["znc::configure"]
+  
+attribute "znc/admin_password",
+  :display_name => "ZNC Admin Password",
+  :description => "The password of the ZNC admin user.",
+  :required => "required",
+  :recipes => ["znc::configure"]
 
 attribute "znc/system_user",
   :display_name => "ZNC System User",
