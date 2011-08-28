@@ -171,7 +171,7 @@
       "default": "/etc/znc/modules",
       "type": "string",
       "recipes": [
-        "znc::default",
+        "znc::configure",
         "znc::modules",
         "znc:module_colloquy"
       ],
@@ -187,7 +187,6 @@
       "default": "/etc/znc",
       "type": "string",
       "recipes": [
-        "znc::default",
         "znc::configure",
         "znc::generate_cert"
       ],
@@ -250,8 +249,7 @@
       "default": "/etc/znc/users",
       "type": "string",
       "recipes": [
-        "znc::default",
-        "znc::install",
+        "znc::configure",
         "znc::generate_cert"
       ],
       "description": "Directory where ZNC users will be stored",
@@ -266,8 +264,7 @@
       "default": "znc",
       "type": "string",
       "recipes": [
-        "znc::default",
-        "znc::install",
+        "znc::configure",
         "znc::generate_cert"
       ],
       "description": "The name of the system user under which ZNC will be run.",
@@ -282,8 +279,7 @@
       "default": "znc",
       "type": "string",
       "recipes": [
-        "znc::default",
-        "znc::install",
+        "znc::configure",
         "znc::generate_cert"
       ],
       "description": "The name of the system group under which ZNC will be run",
@@ -298,8 +294,7 @@
       "default": "/var/log/znc",
       "type": "string",
       "recipes": [
-        "znc::default",
-        "znc::install"
+        "znc::configure"
       ],
       "description": "Directory where ZNC logs will be stored",
       "display_name": "ZNC Log Dir"
@@ -313,8 +308,7 @@
       "default": "/etc/znc/configs",
       "type": "string",
       "recipes": [
-        "znc::default",
-        "znc::install"
+        "znc::configure"
       ],
       "description": "Directory where ZNC configuration will be stored",
       "display_name": "ZNC Config Dir"

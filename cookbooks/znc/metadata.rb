@@ -88,43 +88,43 @@ attribute "znc/system_user",
   :display_name => "ZNC System User",
   :description => "The name of the system user under which ZNC will be run.",
   :default => "znc",
-  :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
+  :recipes => ["znc::configure", "znc::generate_cert"]
   
 attribute "znc/system_group",
   :display_name => "ZNC System Group",
   :description => "The name of the system group under which ZNC will be run",
   :default => "znc",
-  :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
+  :recipes => ["znc::configure", "znc::generate_cert"]
   
 attribute "znc/data_dir",
   :display_name => "ZNC Data Dir",
   :description => "Directory where ZNC data will be stored",
   :default => "/etc/znc",
-  :recipes => ["znc::default", "znc::configure", "znc::generate_cert"]
+  :recipes => ["znc::configure", "znc::generate_cert"]
   
 attribute "znc/conf_dir",
   :display_name => "ZNC Config Dir",
   :description => "Directory where ZNC configuration will be stored",
   :default => "/etc/znc/configs",
-  :recipes => ["znc::default", "znc::install"]
+  :recipes => ["znc::configure"]
   
 attribute "znc/log_dir",
   :display_name => "ZNC Log Dir",
   :description => "Directory where ZNC logs will be stored",
   :default => "/var/log/znc",
-  :recipes => ["znc::default", "znc::install"]
+  :recipes => ["znc::configure"]
 
 attribute "znc/module_dir",
   :display_name => "ZNC Module Dir",
   :description => "Directory where ZNC modules will be stored",
   :default => "/etc/znc/modules",
-  :recipes => ["znc::default", "znc::modules", "znc:module_colloquy"]
+  :recipes => ["znc::configure", "znc::modules", "znc:module_colloquy"]
   
 attribute "znc/user_dir",
   :display_name => "ZNC User Dir",
   :description => "Directory where ZNC users will be stored",
   :default => "/etc/znc/users",
-  :recipes => ["znc::default", "znc::install", "znc::generate_cert"]
+  :recipes => ["znc::configure", "znc::generate_cert"]
   
 attribute "znc/install_method",
   :display_name => "ZNC Install Method",
@@ -186,4 +186,3 @@ attribute "znc/skin",
   :default => "dark-clouds",
   :choice => ["dark-clouds"],
   :recipes => ["znc::configure"]
-  
