@@ -27,7 +27,7 @@ package 'znc' do
   action :remove
 end
 
-directory "/usr/src/znc"
+directory "/usr/src/znc" do
   action :create
 end
 
