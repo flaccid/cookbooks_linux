@@ -17,7 +17,7 @@
 
 # install znc rc script
 template "/etc/init.d/znc" do
-  source "znc.init.erb"
+  source "znc.init.#{platform}.erb"
   owner "root"
   group "root"
   mode "0755"	 	
@@ -25,5 +25,5 @@ end
 
 service "znc" do
   supports :restart => true, :reload => false
-  action [ :enable]
+  action :enable
 end
