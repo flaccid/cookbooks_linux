@@ -22,7 +22,13 @@
 
 # latest source tarball (at this time) http://znc.in/releases/znc-0.200.tar.gz
 
+# remove any installed znc package
+package 'znc' do
+  action :remove
+end
+
 directory "/usr/src/znc"
+  action :create
 
 remote_file "/usr/src/znc/znc-0.200.tar.gz" do
   source "http://znc.in/releases/znc-0.200.tar.gz"
