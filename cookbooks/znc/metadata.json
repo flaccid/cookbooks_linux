@@ -37,6 +37,33 @@
       "description": "The name of the ZNC admin user.",
       "display_name": "ZNC Admin User"
     },
+    "znc/status_prefix": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "The prefix for the status and module queries. This setting may be overwritten by users.",
+      "display_name": "ZNC Status Prefix"
+    },
+    "znc/motd": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "Welcome to ZNC.",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "The 'message of the day' which is sent to clients on connect via notice from *status. Can be specified multiple times.",
+      "display_name": "ZNC MOTD"
+    },
     "znc/admin_password": {
       "required": "required",
       "calculated": false,
@@ -49,6 +76,20 @@
       ],
       "description": "The password of the ZNC admin user.",
       "display_name": "ZNC Admin Password"
+    },
+    "znc/bind_hosts": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "127.0.0.1",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "This is a list of allowed bindhosts for ZNC.",
+      "display_name": "ZNC Bind Host"
     },
     "znc/port": {
       "required": "optional",
@@ -78,6 +119,48 @@
       ],
       "description": "Enable/disable foreground of the ZNC service process.",
       "display_name": "ZNC Foreground Mode"
+    },
+    "znc/anon_ip_limit": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "2",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "Limits the number of unidentified connections per IP with ZNC.",
+      "display_name": "ZNC Anonymous IP Limit"
+    },
+    "znc/connect_delay": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "3",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "The time every connection will be delayed, in seconds. Some servers refuse your connection if you reconnect too fast. This affects the connection between ZNC and the IRC server; not the connection between your IRC client and ZNC.",
+      "display_name": "ZNC Connect Delay"
+    },
+    "znc/configure_options": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "",
+      "type": "string",
+      "recipes": [
+        "znc::source"
+      ],
+      "description": "./configure options for ZNC.",
+      "display_name": "ZNC Compile Options"
     },
     "znc/module_dir": {
       "required": "optional",
@@ -146,9 +229,11 @@
       "calculated": false,
       "choice": [
         "package",
-        "source"
+        "source",
+        "git-devel",
+        "nightly"
       ],
-      "default": "package",
+      "default": "source",
       "type": "string",
       "recipes": [
         "znc::install"
@@ -263,6 +348,20 @@
       ],
       "description": "Enable/disable debugging of ZNC service start and process.",
       "display_name": "ZNC Debug Mode"
+    },
+    "znc/server_throttle": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "3",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "description": "The time between two connect attempts to the same hostname to ZNC.",
+      "display_name": "ZNC Server Throttle"
     }
   },
   "platforms": {
@@ -297,6 +396,7 @@
     "znc::change_user_password": "Changes a ZNC user's password.",
     "znc::stop": "Stops the ZNC daemon.",
     "znc::default": "Install and configure ZNC.",
+    "znc::install_git_devel": "Installs ZNC from the git-devel source at GitHub.",
     "znc::generate_cert": "Generates x509 certificate for ZNC.",
     "znc::source": "Installs ZNC from source.",
     "znc::start": "Starts the ZNC daemon."

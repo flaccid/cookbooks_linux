@@ -17,6 +17,7 @@ recipe "znc::start","Starts the ZNC daemon."
 recipe "znc::stop","Stops the ZNC daemon."
 recipe "znc::restart","Restarts the ZNC daemon."
 recipe "znc::install_service","Installs the ZNC service."
+recipe "znc::install_git_devel","Installs ZNC from the git-devel source at GitHub."
 recipe "znc::configure","Configures the ZNC main configuration."
 recipe "znc::add_user","Add a ZNC user."
 recipe "znc::change_user_password","Changes a ZNC user's password."
@@ -25,6 +26,47 @@ recipe "znc::module_colloquy","Install and enable Colloquy ZNC module."
 recipe "znc::package","Installs ZNC from package."
 recipe "znc::source","Installs ZNC from source."
 recipe "znc::generate_cert","Generates x509 certificate for ZNC."
+
+attribute "znc/configure_options",
+  :display_name => "ZNC Compile Options",
+  :description => "./configure options for ZNC.",
+  :default => "",
+  :recipes => ["znc::source"]
+
+attribute "znc/anon_ip_limit",
+  :display_name => "ZNC Anonymous IP Limit",
+  :description => "Limits the number of unidentified connections per IP with ZNC.",
+  :default => "2",
+  :recipes => ["znc::configure"]
+
+attribute "znc/bind_hosts",
+  :display_name => "ZNC Bind Host",
+  :description => "This is a list of allowed bindhosts for ZNC.",
+  :default => "127.0.0.1",
+  :recipes => ["znc::configure"]
+
+attribute "znc/connect_delay",
+  :display_name => "ZNC Connect Delay",
+  :description => "The time every connection will be delayed, in seconds. Some servers refuse your connection if you reconnect too fast. This affects the connection between ZNC and the IRC server; not the connection between your IRC client and ZNC.",
+  :default => "3",
+  :recipes => ["znc::configure"]
+
+attribute "znc/motd",
+  :display_name => "ZNC MOTD",
+  :description => "The 'message of the day' which is sent to clients on connect via notice from *status. Can be specified multiple times.",
+  :default => "Welcome to ZNC.",
+  :recipes => ["znc::configure"]
+
+attribute "znc/server_throttle",
+  :display_name => "ZNC Server Throttle",
+  :description => "The time between two connect attempts to the same hostname to ZNC.",
+  :default => "3",
+  :recipes => ["znc::configure"]
+
+attribute "znc/status_prefix",
+  :display_name => "ZNC Status Prefix",
+  :description => "The prefix for the status and module queries. This setting may be overwritten by users.",
+  :recipes => ["znc::configure"]
 
 attribute "znc/admin_user",
   :display_name => "ZNC Admin User",
@@ -83,8 +125,8 @@ attribute "znc/user_dir",
 attribute "znc/install_method",
   :display_name => "ZNC Install Method",
   :description => "The installation source for znc, either source or package",
-  :choice => ["package","source"],
-  :default => "package",
+  :choice => ["package", "source", "git-devel", "nightly"],
+  :default => "source",
   :recipes => ["znc::install"]
     
 #attribute "znc/modules",
