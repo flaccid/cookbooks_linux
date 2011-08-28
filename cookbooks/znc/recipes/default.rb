@@ -18,14 +18,8 @@
 # install znc
 include_recipe "znc::install"
 
-# generate server SSL certificate
-include_recipe "znc::generate_cert"
-
 # configure znc
 include_recipe "znc::configure"
 
 # install znc service
 include_recipe "znc::install_service"
-
-# enable/disable modules
-include_recipe "znc::modules"

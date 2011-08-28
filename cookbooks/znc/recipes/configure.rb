@@ -75,3 +75,9 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   )
   notifies :restart, "service[znc]", :immediately
 end
+
+# generate server SSL certificate
+include_recipe "znc::generate_cert"
+
+# enable/disable modules
+include_recipe "znc::modules"
