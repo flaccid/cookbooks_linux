@@ -24,17 +24,17 @@ end
 user node.znc.system_user do
   comment "ZNC daemon"
   system true
-do
+end
 
 group node.znc.system_group do
   members ['znc']
 end
 
 # set permissions on configuration files
-[ node['znc']['data_dir'], 
-  node['znc']['conf_dir'],
-  node['znc']['module_dir'],
-  node['znc']['users_dir']
+[ node.znc.data_dir, 
+  node.znc.conf_dir,
+  node.znc.module_dir,
+  node.znc.users_dir
 ].each do |dir|
   directory dir do
     owner node.znc.system_user
@@ -61,7 +61,7 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   mode 0600
   owner node.znc.system_user
   group node.znc.system_group
-  notifies :start, "service[znc]", :immediately
+  notifies :restart, "service[znc]", :immediately
   variables(
     :admin_user => node.znc.admin_user,
     :admin_password => "#{pass}",
