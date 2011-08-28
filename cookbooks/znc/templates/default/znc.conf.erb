@@ -1,4 +1,13 @@
-Listen     = <%= @port %>
+AnonIPLimit			= <%= @anon_ip_limit %>
+BindHost			= <%= @bind_hosts %>
+ConnectDelay		= <%= @connect_delay %>
+Listen				= <%= @port %>
+LoadModule			= admin
+MaxBufferSizeList	= <%= @max_buffer_size_list %>
+PidFile				= <%= @pid_file %>
+MOTD				= <%= @motd %>
+ServerThrottle		= <%= @server_throttle %>
+StatusPrefix		= <%= @status_prefix %>
 
 <User <%= @admin_user %>>
 	Pass       =  <%= @admin_password %>
