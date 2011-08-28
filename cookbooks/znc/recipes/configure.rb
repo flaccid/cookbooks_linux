@@ -51,7 +51,7 @@ end
 
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
-cmd = "echo \"#{pass_plain}#{salt}\" | sha256sum | awk '{ print $1 }'"
+cmd = "echo -n \"#{pass_plain}#{salt}\" | sha256sum | awk '{ print $1 }'"
 #cmd = "echo -n \"#{pass_plain}#{salt}\" | openssl dgst -sha256" 
 pass_hash = `#{cmd}`
 pass = "sha256##{pass_hash}##{salt}#"
@@ -63,13 +63,21 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   owner node.znc.system_user
   group node.znc.system_group
   variables(
+    :anon_ip_limit = node.znc.anon_ip_limit,
     :admin_user => node.znc.admin_user,
     :admin_password => "#{pass}",
     :admin_server => "irc.freenode.net 6667",
+    :bind_hosts => node.znc.bind_hosts,
+    :connect_delay => node.znc.connect_delay,
     :users => users,  
     :modules => node.znc.modules,
+    :max_buffer_size_list => "",
+    :motd => node.znc.motd,
+    :pid_file => node.znc.pid_file,
     :data_dir => node.znc.data_dir,
     :skin => node.znc.skin,
+    :status_prefix => node.znc.status_prefix,
+    :server_throttle => node.znc.server_throttle,
     :max_buffer_size => node.znc.max_buffer_size,
     :port => node.znc.port
   )
