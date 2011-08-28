@@ -33,6 +33,6 @@ git '/usr/src/znc' do
   repository "git://github.com/znc/znc.git"
   reference "master"
   action :sync
-  notifies :run, "execute[build-znc-gitsrc]", :immediately
-  notifies :run, "execute[install-znc-gitsrc]", :delayed
+  notifies :run, resources(:execute => "build-znc-gitsrc"), :immediately
+  notifies :run, resources(:execute => "install-znc-gitsrc"), :delayed
 end
