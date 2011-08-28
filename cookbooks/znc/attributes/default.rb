@@ -38,6 +38,9 @@ default['znc']['log_dir']         = "#{znc['data_dir']}/moddata/adminlog"
 default['znc']['module_dir']      = "#{znc['data_dir']}/modules"
 default['znc']['users_dir']       = "#{znc['data_dir']}/users"
 
+default['znc']['anon_ip_limit']   = "2"
+default['znc']['bind_hosts']      = "127.0.0.1"
+default['znc']['connect_delay']   = "3"
 default['znc']['port']            = "+7777"
 default['znc']['skin']            = "dark-clouds"
 default['znc']['max_buffer_size'] = 500
