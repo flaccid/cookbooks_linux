@@ -15,24 +15,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+package 'znc' do
+  action :remove
+end
+
 include_recipe 'build-essential'
 
+package 'pkg-config' do
+  action :install
+end
+
 execute 'build-znc-gitsrc' do
-  command "cd /usr/src/znc/znc; ./configure; make"
+  command "cd /usr/src/znc && ./bootstrap.sh && ./configure && make"
   action :nothing
   #environment ({'HOME' => '/home/myhome'})
 end
 
 execute 'install-znc-gitsrc' do
-  command "cd /usr/src/znc/znc; make install"
-  creates "/usr/local/znc"
+  command "cd /usr/src/znc; make install"
+  creates '/usr/local/znc'
   action :nothing
 end
 
 git '/usr/src/znc' do
   repository "git://github.com/znc/znc.git"
-  reference "master"
+  reference 'master'
   action :sync
-  notifies :run, resources(:execute => "build-znc-gitsrc"), :immediately
-  notifies :run, resources(:execute => "install-znc-gitsrc"), :delayed
+  notifies :run, resources(:execute => 'build-znc-gitsrc'), :immediately
+  notifies :run, resources(:execute => 'install-znc-gitsrc'), :delayed
 end
