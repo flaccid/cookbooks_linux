@@ -63,7 +63,7 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   owner node.znc.system_user
   group node.znc.system_group
   variables(
-    :anon_ip_limit = node.znc.anon_ip_limit,
+    :anon_ip_limit => node.znc.anon_ip_limit,
     :admin_user => node.znc.admin_user,
     :admin_password => "#{pass}",
     :admin_server => "irc.freenode.net 6667",
