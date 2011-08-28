@@ -18,8 +18,8 @@
 # install znc
 include_recipe "znc::install"
 
-# configure znc
-include_recipe "znc::configure"
-
 # install znc service
 include_recipe "znc::install_service"
+
+# configure znc
+include_recipe "znc::configure"
