@@ -1,25 +1,25 @@
-AnonIPLimit			= <%= @anon_ip_limit %>
-BindHost			= <%= @bind_hosts %>
-ConnectDelay		= <%= @connect_delay %>
-Listen				= <%= @port %>
-LoadModule			= admin
-MaxBufferSizeList	= <%= @max_buffer_size_list %>
-PidFile				= <%= @pid_file %>
-MOTD				= <%= @motd %>
-ServerThrottle		= <%= @server_throttle %>
-StatusPrefix		= <%= @status_prefix %>
+AnonIPLimit         = <%= @anon_ip_limit %>
+BindHost            = <%= @bind_hosts %>
+ConnectDelay        = <%= @connect_delay %>
+Listen              = <%= @port %>
+LoadModule          = admin
+#MaxBufferSizeList  = <%= @max_buffer_size_list %>
+PidFile             = <%= @pid_file %>
+MOTD                = <%= @motd %>
+ServerThrottle      = <%= @server_throttle %>
+StatusPrefix        = <%= @status_prefix %>
 
 <User <%= @admin_user %>>
-	Pass       =  <%= @admin_password %>
-	Admin      = true
-	Nick       = <%= @admin_user %>
-	AltNick    = <%= @admin_user %>_
-	Ident      = <%= @admin_user %>
-	RealName   = Got ZNC?
-	Buffer     = 50
-	KeepBuffer = false
-	ChanModes  = +stn
-	Server     = <%= @admin_server %>
-	<Chan #znc>
-	</Chan>
+    Pass       =  <%= @admin_password %>
+    Admin      = true
+    Nick       = <%= @admin_user %>
+    AltNick    = <%= @admin_user %>_
+    Ident      = <%= @admin_user %>
+    RealName   = Got ZNC?
+    Buffer     = 50
+    KeepBuffer = false
+    ChanModes  = +stn
+    Server     = <%= @admin_server %>
+    <Chan #znc>
+    </Chan>
 </User>
