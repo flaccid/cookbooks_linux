@@ -391,6 +391,7 @@
     "znc::package": "Installs ZNC from package.",
     "znc::restore_config": "Restore the ZNC configuration to Git or S3.",
     "znc::add_user": "Add a ZNC user.",
+    "znc::install_from_source_tarball": "Installs ZNC from remote source tarball.",
     "znc::install_service": "Installs the ZNC service.",
     "znc::backup_config": "Backup the ZNC configuration to Git or S3.",
     "znc::configure": "Configures the ZNC main configuration.",
