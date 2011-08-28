@@ -34,6 +34,5 @@ case node.platform
       package pkg do
         action :install
       end
-    end
   end
 end
