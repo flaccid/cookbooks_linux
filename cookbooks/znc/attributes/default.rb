@@ -17,7 +17,8 @@
 # limitations under the License.
 #
 
-default['znc']['install_method']      = 'package'
+default['znc']['install_method']      = 'source'
+#default['znc']['install_method']      = 'package'
 
 default['znc']['admin_user']          = 'znc-admin'
 set_unless['znc']['admin_password']   = nil
