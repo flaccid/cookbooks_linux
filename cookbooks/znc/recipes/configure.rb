@@ -23,7 +23,6 @@ end
 
 user node.znc.system_user do
   comment "ZNC daemon"
-  system true
 end
 
 group node.znc.system_group do
@@ -61,7 +60,6 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   mode 0600
   owner node.znc.system_user
   group node.znc.system_group
-  notifies :restart, "service[znc]", :immediately
   variables(
     :admin_user => node.znc.admin_user,
     :admin_password => "#{pass}",
@@ -73,4 +71,5 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
     :max_buffer_size => node.znc.max_buffer_size,
     :port => node.znc.port
   )
+  notifies :restart, "service[znc]", :immediately
 end
