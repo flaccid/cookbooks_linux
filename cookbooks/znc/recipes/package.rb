@@ -31,7 +31,7 @@ case node.platform
       [ "centos" ] => {
         "default" =>  %w{ znc znc-devel znc-extra znc-modperl znc-modtcl }
       },
-      "default" => %w{ znc znc-dev znc-extra }
+      "default" => %w{ znc }
     )
     znc_pkgs.each do |pkg|
       package pkg do
