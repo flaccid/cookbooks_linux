@@ -15,15 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-configure_options = node['znc']['configure_options'].join(" ")
-
-include_recipe 'build-essential'
+configure_options = node.znc.configure_options.join(" ")
 
 pkgs = value_for_platform(
-    [ "debian", "ubuntu" ] =>
-        {"default" => %w{ libssl-dev libperl-dev pkg-config libc-ares-dev }},
+  [ "debian", "ubuntu" ] =>
+    {"default" => %w{ libssl-dev libperl-dev pkg-config libc-ares-dev }},
     "default" => %w{ libssl-dev libperl-dev pkg-config libc-ares-dev }
-  )
+)
 
 pkgs.each do |pkg|
   package pkg do
@@ -31,7 +29,7 @@ pkgs.each do |pkg|
   end
 end
 
-version = node['znc']['version']
+version = node.znc.version  
 
 remote_file "#{Chef::Config[:file_cache_path]}/znc-#{version}.tar.gz" do
   source "#{node['znc']['url']}/znc-#{version}.tar.gz"
