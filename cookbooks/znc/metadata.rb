@@ -130,7 +130,7 @@ attribute "znc/install_method",
   :display_name => "ZNC Install Method",
   :description => "The installation source for znc, either source or package",
   :choice => ["package", "source", "git-devel", "nightly"],
-  :default => "source",
+  :default => "package",
   :recipes => ["znc::install"]
     
 #attribute "znc/modules",

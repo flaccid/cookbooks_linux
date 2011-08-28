@@ -233,7 +233,7 @@
         "git-devel",
         "nightly"
       ],
-      "default": "source",
+      "default": "package",
       "type": "string",
       "recipes": [
         "znc::install"
