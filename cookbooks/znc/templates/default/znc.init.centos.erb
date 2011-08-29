@@ -13,7 +13,7 @@
 RETVAL=0
 ARGS=""
 prog="znc"
-CONFIG=/etc/znc/configs/znc.conf
+DATA_DIR=/etc/znc
 
 if [ -r /etc/default/$prog ]; then
 	. /etc/default/$prog
@@ -21,7 +21,7 @@ fi
 
 start () {
 	echo -n $"Starting $prog: "
-	daemon --user znc /usr/bin/znc
+	daemon --user znc /usr/bin/znc --datadir "$DATA_DIR"
 	RETVAL=$?
 	echo
 	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/$prog
