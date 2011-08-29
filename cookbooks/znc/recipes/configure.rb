@@ -51,8 +51,8 @@ end
 
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
-cmd = "echo -n \"#{pass_plain}#{salt}\" | sha256sum | awk '{ print $1 }'"
-#cmd = "echo -n \"#{pass_plain}#{salt}\" | openssl dgst -sha256" 
+cmd = "echo -n '#{pass_plain}#{salt}' | sha256sum | awk '{ print $1 }'"
+#cmd = "echo -n '#{pass_plain}#{salt}\' | openssl dgst -sha256 | awk '{ print $2 }'" 
 pass_hash = `#{cmd}`
 pass = "sha256##{pass_hash}##{salt}#"
 
