@@ -84,6 +84,14 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
 #  notifies :restart, "service[znc]", :immediately
 end
 
+# ensure znc pid file exists
+file "#{node.pid_file}" do
+  owner node.znc.system_user
+  group node.znc.system_group
+  mode 0600
+  action :create
+end
+
 # generate server SSL certificate
 include_recipe "znc::generate_cert"
 
