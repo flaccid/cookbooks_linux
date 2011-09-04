@@ -30,6 +30,7 @@ directory "/home/#{node.znc.user}/.znc/configs" do
   recursive true
 end
 
+
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
 cmd = "echo -n '#{pass_plain}#{salt}' | sha256sum | awk '{ print $1 }'"
@@ -74,8 +75,9 @@ file "#{node.znc.pid_file}" do
   action :create
 end
 
+#todo: only call if no cert exists
 # generate server SSL certificate
-include_recipe "znc::generate_cert"
+#include_recipe "znc::generate_cert"
 
 # enable/disable modules
 include_recipe "znc::modules"
