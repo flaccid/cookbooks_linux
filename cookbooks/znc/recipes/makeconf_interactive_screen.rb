@@ -22,7 +22,7 @@ log "Starting detached screen session for #{node.znc.user}."
 
 execute "znc_makeconf_interactive" do
   # when screen -ls | grep is run at the end, if no screens exist a non-zero exit will be triggered
-  command "sudo -u #{node.znc.user} screen -S znc -t znc -d -m -c /dev/null -- sh -c 'znc -f --makeconf; exec $SHELL'; echo '==> screen sessions for #{node.znc.user}:'; screen -ls | grep znc"
+  command "sudo -u #{node.znc.user} screen -S znc -t znc -d -m -c /dev/null -- sh -c 'znc -f --makeconf && exit; exec $SHELL'; echo '==> screen sessions for #{node.znc.user}:'; screen -ls | grep znc"
 end
 
 log "==> Now, to start the interactive configuration, switch user to '#{node.znc.user}' and run, screen -r -S znc"
