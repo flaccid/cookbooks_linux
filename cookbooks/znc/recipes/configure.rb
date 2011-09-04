@@ -26,7 +26,9 @@ user node.znc.user do
   home "/home/#{node.znc.user}"
 end
 
-directory "/home/#{node.znc.user}/.znc/configs"
+directory "/home/#{node.znc.user}/.znc/configs" do
+  recursive true
+end
 
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
