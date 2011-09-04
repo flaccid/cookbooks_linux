@@ -30,7 +30,6 @@ directory "/home/#{node.znc.user}/.znc/configs" do
   recursive true
 end
 
-
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
 cmd = "echo -n '#{pass_plain}#{salt}' | sha256sum | awk '{ print $1 }'"
@@ -69,8 +68,8 @@ end
 
 # ensure znc pid file exists
 file "#{node.znc.pid_file}" do
-  owner node.znc.system_user
-  group node.znc.system_group
+  owner node.znc.user
+  group node.znc.group
   mode 0600
   action :create
 end

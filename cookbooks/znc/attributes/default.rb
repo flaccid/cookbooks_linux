@@ -24,7 +24,9 @@ default['znc']['admin_user']      = 'znc-admin'
 default['znc']['admin_password']  = nil
 
 default['znc']['install_method']  = 'package'
-default['znc']['data_dir']        = '/home/znc/.znc'
+
+set_unless['znc']['user']         = 'znc'
+default['znc']['data_dir']        = "/home/#{znc['user']}/.znc"
 default['znc']['conf_dir']        = "#{znc['data_dir']}/configs"
 default['znc']['log_dir']         = "#{znc['data_dir']}/moddata/adminlog"
 default['znc']['module_dir']      = "#{znc['data_dir']}/modules"
@@ -50,4 +52,3 @@ default['znc']['use_screen_session']  = false
 
 default['znc']['create_user']         = false
 
-set_unless['znc']['user']             = 'znc'
