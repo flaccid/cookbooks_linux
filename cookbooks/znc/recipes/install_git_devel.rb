@@ -27,12 +27,12 @@ if node.platform != 'mac_os_x'
   end
 end
 
-directory "/usr/local/src/znc-devel" do
+directory '/usr/local/src/znc-devel' do
   recursive true
   action :delete
 end
 
-directory "/usr/local/src/znc-devel" do
+directory '/usr/local/src/znc-devel' do
   action :create
 end
 
