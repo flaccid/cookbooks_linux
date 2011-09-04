@@ -7,7 +7,7 @@ version          "0.0.1"
 
 depends "build-essential"
 
-%w{ debian ubuntu }.each do |os|
+%w{ debian ubuntu mac_os_x }.each do |os|
   supports os
 end
 
