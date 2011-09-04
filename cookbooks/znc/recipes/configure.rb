@@ -42,7 +42,7 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
     :admin_server => "irc.freenode.net 6667",
     :bind_hosts => node.znc.bind_hosts,
     :connect_delay => node.znc.connect_delay,
-    :users => users,
+    #:users => users,
     :global_modules => node.znc.modules,
     :max_buffer_size_list => "",
     :motd => node.znc.motd,
