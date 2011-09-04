@@ -15,6 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+case node.platform
+  when 'mac_os_x'
+    # TODO: install via homebrew
+    log "OS X not yet supported."
+    exit()
+end
+
 # install znc rc script
 template "/etc/init.d/znc" do
   source "znc.init.#{node.platform}.erb"
