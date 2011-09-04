@@ -23,14 +23,6 @@ package "coreutils" do
   action :install
 end
 
-user node.znc.system_user do
-  comment "ZNC daemon"
-end
-
-group node.znc.system_group do
-  members ['znc']
-end
-
 # set permissions on configuration files
 [ node.znc.data_dir, 
   node.znc.conf_dir,
