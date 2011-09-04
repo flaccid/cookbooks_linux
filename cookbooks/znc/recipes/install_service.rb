@@ -22,6 +22,27 @@ case node.platform
     exit()
 end
 
+
+# set permissions on configuration files
+[ node.znc.data_dir, 
+  node.znc.conf_dir,
+  node.znc.module_dir,
+  node.znc.users_dir
+].each do |dir|
+  directory dir do
+    owner node.znc.system_user
+    group node.znc.system_group
+  end
+end
+
+user node.znc.system_user do
+  comment "ZNC daemon"
+end
+
+group node.znc.system_group do
+  members ['znc']
+end
+
 # install znc rc script
 template "/etc/init.d/znc" do
   source "znc.init.#{node.platform}.erb"
