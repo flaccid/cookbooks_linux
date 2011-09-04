@@ -24,6 +24,7 @@ default['znc']['install_method']  = 'package'
 
 set_unless['znc']['user']         = 'znc'
 set_unless['znc']['group']        = 'znc'
+
 default['znc']['admin_user']      = 'znc-admin'
 default['znc']['admin_password']  = nil
 
@@ -33,12 +34,16 @@ default['znc']['log_dir']         = "#{znc['data_dir']}/moddata/adminlog"
 default['znc']['module_dir']      = "#{znc['data_dir']}/modules"
 default['znc']['users_dir']       = "#{znc['data_dir']}/users"
 
+set_unless['znc']['user_nickname']        = znc['user']
+set_unless['znc']['user_ident']           = znc['user']
+set_unless['znc']['user_nickname_alt']    = "#{znc['user']}_"
+
 default['znc']['motd']            = "Welcome to ZNC!"
 default["znc"]["pid_file"]        = "/var/run/znc.pid"
-default['znc']['anon_ip_limit']   = "2"
+default['znc']['anon_ip_limit']   = '2'
 default['znc']['bind_hosts']      = "0.0.0.0"
-default['znc']['connect_delay']   = "3"
-default['znc']['port']            = "+7777"
+default['znc']['connect_delay']   = '3'
+default['znc']['port']            = '7777'
 default['znc']['skin']            = "dark-clouds"
 default['znc']['max_buffer_size'] = 500
 default['znc']['modules']         = %w{ webadmin adminlog }
