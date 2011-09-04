@@ -29,6 +29,7 @@ end
 
 directory "/usr/src/znc" do
   action :create
+  recursive true
 end
 
 remote_file "/usr/src/znc/znc-0.200.tar.gz" do
