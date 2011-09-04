@@ -27,23 +27,26 @@ if node.platform != 'mac_os_x'
   end
 end
 
-directory "/usr/src/znc" do
+directory "/usr/local/src/znc-devel" do
   recursive true
+  action :delete
+end
+
+directory "/usr/local/src/znc-devel" do
+  action :create
 end
 
 execute 'build-znc-gitsrc' do
-  command "cd /usr/src/znc && ./bootstrap.sh && ./configure && make"
+  command "rm -vf /usr/local/src/znc-devel/modules/partyline.cpp && cd /usr/local/src/znc-devel && ./bootstrap.sh && ./configure && make"
   action :nothing
-  #environment ({'HOME' => '/home/myhome'})
 end
 
 execute 'install-znc-gitsrc' do
-  command "cd /usr/src/znc; make install"
-  creates '/usr/local/znc'
+  command "cd /usr/src/znc-devel; make install"
   action :nothing
 end
 
-git '/usr/src/znc' do
+git '/usr/local/src/znc-devel' do
   repository "git://github.com/znc/znc.git"
   reference 'master'
   action :sync
