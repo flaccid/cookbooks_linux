@@ -21,6 +21,8 @@ end
 
 user node.znc.user
 
+directory "/home/#{node.znc.user}/.znc/configs"
+
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
 cmd = "echo -n '#{pass_plain}#{salt}' | sha256sum | awk '{ print $1 }'"
