@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "znc::stop"
+
 if node.platform != 'mac_os_x'
   package "coreutils" do
     action :install
@@ -81,7 +83,7 @@ template "#{user_home}/.znc/configs/znc.conf" do
     :max_buffer_size => node.znc.max_buffer_size,
     :port => node.znc.port
   )
-#  notifies :restart, "service[znc]", :immediately
+  notifies :start, resources(:service => 'znc'), :delayed
 end
 
 # ensure znc pid file exists
