@@ -19,11 +19,9 @@ package "coreutils" do
   action :install
 end
 
-if node.znc.user == 'znc'
-  user 'znc' do
-    action :create
-    comment "ZNC general user"
-  end
+user node.znc.user do
+  action :create
+  comment "ZNC general user"
 end
 
 if !Chef::Config.solo
