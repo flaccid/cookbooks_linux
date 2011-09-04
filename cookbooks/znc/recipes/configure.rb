@@ -15,24 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-service "znc"
-
-include_recipe "znc::install_service"
-
 package "coreutils" do
   action :install
-end
-
-# set permissions on configuration files
-[ node.znc.data_dir, 
-  node.znc.conf_dir,
-  node.znc.module_dir,
-  node.znc.users_dir
-].each do |dir|
-  directory dir do
-    owner node.znc.system_user
-    group node.znc.system_group
-  end
 end
 
 if !Chef::Config.solo
