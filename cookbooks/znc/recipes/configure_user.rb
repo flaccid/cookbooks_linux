@@ -27,13 +27,7 @@ end
 
 group node.znc.user
 
-if node.platform != 'mac_os_x'
-  cmd = "su #{node.znc.user} -c 'echo -n \"$HOME\"'"
-else
-  cmd = "sudo -u #{node.znc.user} echo -n \"$HOME\""
-end
-
-user_home = `#{cmd}`
+user_home = ::File.expand_path("~#{node.znc.user}")
 
 directory "#{user_home}/.znc/configs" do
   owner node.znc.user
