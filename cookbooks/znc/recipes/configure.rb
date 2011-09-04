@@ -19,7 +19,7 @@ package "coreutils" do
   action :install
 end
 
-if node.znc.user == 'znc' do
+if node.znc.user == 'znc'
   user 'znc' do
     comment "ZNC general user"
   end
