@@ -19,6 +19,12 @@ package "coreutils" do
   action :install
 end
 
+if node.znc.user == 'znc' do
+  user 'znc' do
+    comment "ZNC general user"
+  end
+end
+
 if !Chef::Config.solo
   users = search(:users, 'groups:znc')
 else
