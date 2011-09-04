@@ -20,7 +20,7 @@ package "openssl" do
 end
 
 case node.platform
-  when 'macosx'
+  when 'mac_os_x'
     # TODO: install via homebrew
     log "OS X not yet supported."
   else
