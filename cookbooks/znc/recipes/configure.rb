@@ -19,7 +19,12 @@ package "coreutils" do
   action :install
 end
 
-user node.znc.user
+group node.znc.user
+
+user node.znc.user do
+  gid node.znc.user
+  home "/home/#{node.znc.user}"
+end
 
 directory "/home/#{node.znc.user}/.znc/configs"
 
