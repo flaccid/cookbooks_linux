@@ -21,6 +21,7 @@ end
 
 if node.znc.user == 'znc'
   user 'znc' do
+    action :create
     comment "ZNC general user"
   end
 end
