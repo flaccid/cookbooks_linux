@@ -27,6 +27,10 @@ user node.znc.user do
 end
 
 directory "/home/#{node.znc.user}/.znc/configs" do
+  owner "#{node.znc.user}"
+  group "#{node.znc.group}"
+  mode "0750"
+  action :create
   recursive true
 end
 
