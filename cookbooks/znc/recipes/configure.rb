@@ -63,6 +63,7 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
   owner node.znc.system_user
   group node.znc.system_group
   variables(
+    :create_user => node.znc.create_user,
     :anon_ip_limit => node.znc.anon_ip_limit,
     :admin_user => node.znc.admin_user,
     :admin_password => "#{pass}",
@@ -85,7 +86,7 @@ template "#{node.znc.data_dir}/configs/znc.conf" do
 end
 
 # ensure znc pid file exists
-file "#{node.pid_file}" do
+file "#{node.znc.pid_file}" do
   owner node.znc.system_user
   group node.znc.system_group
   mode 0600
