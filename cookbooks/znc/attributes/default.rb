@@ -26,18 +26,15 @@ default['znc']['admin_password']      = nil
 set['znc']['system_user'] = 'znc'
 set['znc']['system_group'] = 'znc'
 
-case node["platform"]
-when "macosx"
-  set['znc']['data_dir'] = '$HOME/.znc'
-else
-  set['znc']['data_dir'] = '/etc/znc'
-end
+set['znc']['data_dir'] = '/home/znc/.znc'
 
 default['znc']['conf_dir']        = "#{znc['data_dir']}/configs"
 default['znc']['log_dir']         = "#{znc['data_dir']}/moddata/adminlog"
 default['znc']['module_dir']      = "#{znc['data_dir']}/modules"
 default['znc']['users_dir']       = "#{znc['data_dir']}/users"
 
+default['znc']['motd']            = "Welcome to ZNC!"
+default["znc"]["pid_file"]        = "/var/run/znc.pid"
 default['znc']['anon_ip_limit']   = "2"
 default['znc']['bind_hosts']      = "127.0.0.1"
 default['znc']['connect_delay']   = "3"
@@ -47,11 +44,11 @@ default['znc']['max_buffer_size'] = 500
 default['znc']['modules']         = %w{ webadmin adminlog }
 default['znc']['users']           = %w{ znc }
 
-set_unless['znc']['pid_file']        = '/var/run/znc.pid'
-
 default['znc']['status_prefix']   = 'znc'
 default['znc']['server_throttle'] = '3'
 
 default['znc']['debug']               = false
 default['znc']['foreground']          = false
 default['znc']['use_screen_session']  = false
+
+default['znc']['create_user']         = false
