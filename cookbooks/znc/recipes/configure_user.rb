@@ -27,7 +27,12 @@ end
 
 group node.znc.user
 
-cmd = "sudo -u #{node.znc.user} echo -n \"$HOME\""
+if node.platform != 'mac_os_x'
+  cmd = "su #{node.znc.user} -c 'echo \"$HOME\"'"
+else
+  cmd = "sudo -u #{node.znc.user} echo -n \"$HOME\""
+end
+
 user_home = `#{cmd}`
 
 directory "#{user_home}/.znc/configs" do
