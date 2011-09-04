@@ -22,8 +22,9 @@ set['znc']['system_group'] = 'znc'
 
 default['znc']['install_method']  = 'package'
 
-set_unless['znc']['user']         = 'znc'
-set_unless['znc']['group']        = 'znc'
+set_unless['znc']['user']           = 'znc'
+set_unless['znc']['user_password']  = nil
+set_unless['znc']['group']          = 'znc'
 
 default['znc']['admin_user']      = 'znc-admin'
 default['znc']['admin_password']  = nil
@@ -34,10 +35,14 @@ default['znc']['log_dir']         = "#{znc['data_dir']}/moddata/adminlog"
 default['znc']['module_dir']      = "#{znc['data_dir']}/modules"
 default['znc']['users_dir']       = "#{znc['data_dir']}/users"
 
+set_unless['znc']['create_user']          = 'yes'
 set_unless['znc']['user_nickname']        = znc['user']
+set_unless['znc']['user_real_name']       = "Got ZNC?"
 set_unless['znc']['user_ident']           = znc['user']
 set_unless['znc']['user_nickname_alt']    = "#{znc['user']}_"
+set_unless['znc']['user_default_channel'] = '#znc'
 
+set_unless['znc']['default_server']       = 'irc.freenode.net'
 default['znc']['motd']            = "Welcome to ZNC!"
 default["znc"]["pid_file"]        = "/var/run/znc.pid"
 default['znc']['anon_ip_limit']   = '2'
@@ -55,6 +60,3 @@ default['znc']['server_throttle'] = '3'
 default['znc']['debug']               = false
 default['znc']['foreground']          = false
 default['znc']['use_screen_session']  = false
-
-default['znc']['create_user']         = false
-
