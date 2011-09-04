@@ -27,8 +27,8 @@ user node.znc.user do
 end
 
 directory "/home/#{node.znc.user}/.znc/configs" do
-  owner "#{node.znc.user}"
-  group "#{node.znc.group}"
+  owner node.znc.user
+  group node.znc.group
   mode "0750"
   action :create
   recursive true
@@ -45,8 +45,8 @@ pass = "sha256##{pass_hash}##{salt}#"
 template "#{node.znc.data_dir}/configs/znc.conf" do
   source "znc.conf.erb"
   mode 0600
-  owner node.znc.system_user
-  group node.znc.system_group
+  owner node.znc.user
+  group node.znc.group
   variables(
     :create_user => node.znc.create_user,
     :anon_ip_limit => node.znc.anon_ip_limit,
