@@ -19,16 +19,7 @@ package "coreutils" do
   action :install
 end
 
-user node.znc.user do
-  action :create
-  comment "ZNC general user"
-end
-
-if !Chef::Config.solo
-  users = search(:users, 'groups:znc')
-else
-  users = node[:znc][:users]
-end
+user node.znc.user
 
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
