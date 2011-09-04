@@ -1,25 +1,27 @@
-AnonIPLimit         = <%= @anon_ip_limit %>
-BindHost            = <%= @bind_hosts %>
-ConnectDelay        = <%= @connect_delay %>
 Listen              = <%= @port %>
+BindHost            = <%= @bind_hosts %>
+PidFile             = <%= @pid_file %>
+AnonIPLimit         = <%= @anon_ip_limit %>
+ConnectDelay        = <%= @connect_delay %>
 #LoadModule          = <%= @global_modules %>
 #MaxBufferSizeList   = <%= @max_buffer_size_list %>
-PidFile             = <%= @pid_file %>
-MOTD                = <%= @motd %>
 ServerThrottle      = <%= @server_throttle %>
 StatusPrefix        = <%= @status_prefix %>
+MOTD                = <%= @motd %>
 
-<User <%= @admin_user %>>
-    Pass       =  <%= @admin_password %>
-    Admin      = true
-    Nick       = <%= @admin_user %>
-    AltNick    = <%= @admin_user %>_
-    Ident      = <%= @admin_user %>
-    RealName   = Got ZNC?
-    Buffer     = 50
-    KeepBuffer = false
-    ChanModes  = +stn
-    Server     = <%= @admin_server %>
-    <Chan #znc>
+<% if @create_user == "yes" %>
+<User <%= @user_name %>>
+    Pass       =  <%= @user_password %>
+    Admin      = <%= @user_is_admin %>true
+    Nick       = <%= @user_nickname %>
+    AltNick    = <%= @user_nickname_alt %>_
+    Ident      = <%= @user_ident %>
+    RealName   = <%= @user_real_name %>
+    Buffer     = <%= @user_buffer %>50
+    KeepBuffer = <%= @user_keep_buffer %>false
+    ChanModes  = <%= @user_chan_modes %>+stn
+    Server     = <%= @default_server %>
+    <Chan <%= @user_default_channel %>>
     </Chan>
 </User>
+<% end %>
