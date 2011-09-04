@@ -20,12 +20,13 @@
 set['znc']['system_user'] = 'znc'
 set['znc']['system_group'] = 'znc'
 
-default['znc']['admin_user']      = 'znc-admin'
-default['znc']['admin_password']  = nil
-
 default['znc']['install_method']  = 'package'
 
 set_unless['znc']['user']         = 'znc'
+set_unless['znc']['group']        = 'znc'
+default['znc']['admin_user']      = 'znc-admin'
+default['znc']['admin_password']  = nil
+
 default['znc']['data_dir']        = "/home/#{znc['user']}/.znc"
 default['znc']['conf_dir']        = "#{znc['data_dir']}/configs"
 default['znc']['log_dir']         = "#{znc['data_dir']}/moddata/adminlog"
