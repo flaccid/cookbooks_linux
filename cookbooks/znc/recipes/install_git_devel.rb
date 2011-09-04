@@ -21,8 +21,14 @@ end
 
 include_recipe 'build-essential'
 
-package 'pkg-config' do
-  action :install
+if node.platform != 'mac_os_x'
+  package 'pkg-config' do
+    action :install
+  end
+end
+
+directory "/usr/src/znc" do
+  recursive true
 end
 
 execute 'build-znc-gitsrc' do
