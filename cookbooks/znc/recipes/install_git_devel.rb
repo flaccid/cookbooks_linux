@@ -36,13 +36,13 @@ directory "/usr/local/src/znc-devel" do
   action :create
 end
 
-execute 'build-znc-gitsrc' do
+execute 'build-znc-git-devel' do
   command "rm -vf /usr/local/src/znc-devel/modules/partyline.cpp && cd /usr/local/src/znc-devel && ./bootstrap.sh && ./configure && make"
   action :nothing
 end
 
-execute 'install-znc-gitsrc' do
-  command "cd /usr/src/znc-devel; make install"
+execute 'install-znc-git-devel' do
+  command "cd /usr/local/src/znc-devel; make install"
   action :nothing
 end
 
@@ -50,6 +50,6 @@ git '/usr/local/src/znc-devel' do
   repository "git://github.com/znc/znc.git"
   reference 'master'
   action :sync
-  notifies :run, resources(:execute => 'build-znc-gitsrc'), :immediately
-  notifies :run, resources(:execute => 'install-znc-gitsrc'), :delayed
+  notifies :run, resources(:execute => 'build-znc-git-devel'), :immediately
+  notifies :run, resources(:execute => 'install-znc-git-devel'), :delayed
 end
