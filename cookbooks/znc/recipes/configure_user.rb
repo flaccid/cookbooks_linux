@@ -28,7 +28,7 @@ end
 group node.znc.user
 
 if node.platform != 'mac_os_x'
-  cmd = "su #{node.znc.user} -c 'echo \"$HOME\"'"
+  cmd = "su #{node.znc.user} -c 'echo -n \"$HOME\"'"
 else
   cmd = "sudo -u #{node.znc.user} echo -n \"$HOME\""
 end
