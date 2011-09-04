@@ -20,7 +20,6 @@
 set['znc']['system_user'] = 'znc'
 set['znc']['system_group'] = 'znc'
 
-default['znc']['user']            = "#{ENV['USER']}"
 default['znc']['admin_user']      = 'znc-admin'
 default['znc']['admin_password']  = nil
 
@@ -50,3 +49,5 @@ default['znc']['foreground']          = false
 default['znc']['use_screen_session']  = false
 
 default['znc']['create_user']         = false
+
+set_unless['znc']['user']             = 'znc'
