@@ -17,8 +17,17 @@
 
 user_home = ::File.expand_path("~#{node.znc.user}")
 
-directory "#{user_home}/.znc/logs"
-file "#{user_home}/.znc/logs/znc.log"
+directory "#{user_home}/.znc/logs" do
+  owner node.znc.user
+  group node.znc.group
+  mode "0700"
+end
+
+file "#{user_home}/.znc/logs/znc.log" do
+  owner node.znc.user
+  group node.znc.group
+  mode "0700"
+end
 
 execute "start_znc" do
   command "znc > ~/.znc/logs/znc.log 2>&1"
