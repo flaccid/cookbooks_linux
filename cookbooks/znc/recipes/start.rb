@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-service "znc" do
-  action :start
+execute "start_znc" do
+  command "znc"
+  user node.znc.user
 end

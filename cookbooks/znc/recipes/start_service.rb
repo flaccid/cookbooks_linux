@@ -1,5 +1,5 @@
 # Cookbook Name:: znc
-# Recipe:: stop
+# Recipe:: start_service
 #
 # Copyright 2011, Chris Fordham
 #
@@ -15,7 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-execute "stop_znc" do
-  command "pkill znc"
-  user node.znc.user
+service "znc" do
+  action :start
 end
