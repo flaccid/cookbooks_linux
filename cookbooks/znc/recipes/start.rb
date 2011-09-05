@@ -15,7 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+user_home = ::File.expand_path("~#{node.znc.user}")
+
+directory "#{user_home}/.znc/logs"
+file "#{user_home}/.znc/logs/znc.log"
+
 execute "start_znc" do
-  command "znc"
+  command "znc > ~/.znc/logs/znc.log 2>&1"
   user node.znc.user
 end
