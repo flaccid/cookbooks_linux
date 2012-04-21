@@ -56,7 +56,7 @@ def generate_znc_password(password_plain)
   #cmd = "echo -n '#{password_plain}#{salt}' | openssl dgst -sha256 | awk '{ print $2 }'" 
   pass_hash = `#{cmd}`.strip
   pass = "sha256##{pass_hash.strip}##{salt.strip}#"
-  puts pass
+  return pass
 end
 
 admin_password = generate_znc_password(node['znc']['admin_password'])
