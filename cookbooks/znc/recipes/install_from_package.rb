@@ -19,21 +19,22 @@
 package "openssl"
 
 case node['platform']
-  when 'mac_os_x'
-    # TODO: install via homebrew
-    log "OS X not yet supported."
-  else
-    znc_pkgs = value_for_platform(
-      [ "debian","ubuntu" ] => {
-        "default" => %w{ znc znc-dev znc-extra }# znc-webadmin}
-      },
-      [ "centos" ] => {
-        "default" =>  %w{ znc znc-devel znc-extra znc-modperl znc-modtcl }
-      },
-      "default" => %w{ znc }
-    )
-    znc_pkgs.each do |pkg|
-      package pkg
-    end
-  end
+when 'mac_os_x'
+  # TODO: install via homebrew
+  log "OS X not yet supported."
+  exit 1
+end
+
+znc_pkgs = value_for_platform(
+  [ "debian","ubuntu" ] => {
+    "default" => %w{ znc znc-dev znc-extra }# znc-webadmin}
+  },
+  [ "centos" ] => {
+    "default" =>  %w{ znc znc-devel znc-extra znc-modperl znc-modtcl }
+  },
+    "default" => %w{ znc }
+)
+
+znc_pkgs.each do |pkg|
+  package pkg
 end
