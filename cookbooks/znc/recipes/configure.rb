@@ -61,7 +61,7 @@ pass_hash = `#{cmd}`
 pass = "sha256##{pass_hash}##{salt}#"
 
 # render znc.conf
-template "#{node['znc.data_dir']}/configs/znc.conf" do
+template "#{node['znc']['data_dir']}/configs/znc.conf" do
   source "znc.conf.erb"
   mode 0600
   owner node.znc.user
