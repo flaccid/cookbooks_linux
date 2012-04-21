@@ -18,14 +18,11 @@
 # install znc
 include_recipe "znc::install"
 
-# install znc service
-include_recipe "znc::install_service"
-
 # configure znc
 include_recipe "znc::configure"
 
-# generate pem
-include_recipe "znc::generate_cert"
+# install znc service
+include_recipe "znc::install_service"
 
 # start znc service
 include_recipe "znc::start_service"
