@@ -64,32 +64,35 @@ template "#{node['znc']['data_dir']}/configs/znc.conf" do
   owner node['znc']['system_user']
   group node['znc']['system_group']
   variables(
-    :anon_ip_limit => node.znc.anon_ip_limit,
-    :admin_user => node.znc.admin_user,
+    :anon_ip_limit => node['znc']['anon_ip_limit'],
+    :admin_user => node['znc']['admin_user'],
     :admin_password => "#{pass}",
     :admin_server => "irc.freenode.net 6667",
-    :bind_hosts => node.znc.bind_hosts,
-    :connect_delay => node.znc.connect_delay,
-    :global_modules => node.znc.modules,
+    :bind_hosts => node['znc']['bind_hosts'],
+    :connect_delay => node['znc']['connect_delay'],
+    :global_modules => node['znc']['modules'],
     :max_buffer_size_list => "",
-    :motd => node.znc.motd,
-    :pid_file => node.znc.pid_file,
-    :data_dir => node.znc.data_dir,
-    :skin => node.znc.skin,
-    :status_prefix => node.znc.status_prefix,
-    :server_throttle => node.znc.server_throttle,
-    :max_buffer_size => node.znc.max_buffer_size,
-    :port => node.znc.port,
+    :motd => node['znc']['motd'],
+    :pid_file => node['znc']['pid_file'],
+    :data_dir => node['znc']['data_dir'],
+    :skin => node['znc']['skin'],
+    :status_prefix => node['znc']['status_prefix'],
+    :server_throttle => node['znc']['server_throttle'],
+    :max_buffer_size => node['znc.max_buffer_size'],
+    :port => node['znc']['port'],
     :user_name => node['znc']['admin_user'],
-    :user_password => node['znc']['admin_password']
+    :user_password => node['znc']['admin_password'],
+    :user_nickname => node['znc']['admin_user'],
+    :user_nickname_alt => "#{node['znc']['admin_user']}_",
+    :user_ident => node['znc']['admin_user'],
+    :user_real_name => "ZNC Admin"
     #:users => users,
   )
   notifies :restart, "service[znc]", :delayed
 end
 
-#todo: only call if no cert exists
 # generate server SSL certificate
-#include_recipe "znc::generate_cert"
+include_recipe "znc::generate_cert"
 
 # enable/disable modules
 include_recipe "znc::modules"
