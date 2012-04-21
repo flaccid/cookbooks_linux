@@ -1,13 +1,9 @@
 {
-  "maintainer": "Chris Fordham",
-  "replacing": {
+  "dependencies": {
+    "build-essential": ">= 0.0.0"
   },
+  "name": "znc",
   "maintainer_email": "chris.fordham@rightscale.com",
-  "groupings": {
-  },
-  "description": "Installs/Configures ZNC IRC bouncer.",
-  "recommendations": {
-  },
   "attributes": {
     "znc/skin": {
       "required": "optional",
@@ -372,31 +368,23 @@
       "display_name": "ZNC Server Throttle"
     }
   },
-  "platforms": {
-    "debian": [
-
-    ],
-    "ubuntu": [
-
-    ]
-  },
+  "license": "Apache 2.0",
   "suggestions": {
   },
-  "dependencies": {
-    "build-essential": [
-
-    ]
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "mac_os_x": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0"
   },
-  "version": "0.0.1",
-  "conflicting": {
-  },
-  "name": "znc",
+  "maintainer": "Chris Fordham",
   "long_description": "Description\n===========\n\nInstalls and configures ZNC, an IRC bouncer.\n\nRequirements\n============\n\nPlatform\n--------\n\n* Debian, Ubuntu\n\nUsage\n=====\n\ndefault\n-------\n\nInclude the default recipe in a run list, to get `znc`.  By default `znc` is installed from packages but this can be changed by using the `install_method` attribute.\n\npackage\n-------\n\nThis recipe installs ZNC from packages.\n\nsource\n------\n\nThis recipe installs ZNC from source.\n\nLicense and Author\n==================\n\nAuthor:: Seth Chisamore (<schisamo@gmail.com>)\n\nCopyright:: 2011, Seth Chisamore\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "version": "0.0.1",
+  "recommendations": {
+  },
   "recipes": {
     "znc::module_colloquy": "Install and enable Colloquy ZNC module.",
     "znc::modules": "Enables desired ZNC modules.",
     "znc::restart": "Restarts the ZNC daemon.",
-    "znc::package": "Installs ZNC from package.",
     "znc::restore_config": "Restore the ZNC configuration to Git or S3.",
     "znc::add_user": "Add a ZNC user.",
     "znc::install_from_source_tarball": "Installs ZNC from remote source tarball.",
@@ -405,6 +393,7 @@
     "znc::configure": "Configures the ZNC main configuration.",
     "znc::install": "Install ZNC.",
     "znc::change_user_password": "Changes a ZNC user's password.",
+    "znc::install_from_package": "Installs ZNC from package.",
     "znc::stop": "Stops the ZNC daemon.",
     "znc::default": "Install and configure ZNC.",
     "znc::install_git_devel": "Installs ZNC from the git-devel source at GitHub.",
@@ -413,7 +402,13 @@
     "znc::source": "Installs ZNC from source.",
     "znc::start": "Starts the ZNC daemon."
   },
-  "providing": {
+  "groupings": {
   },
-  "license": "Apache 2.0"
+  "conflicting": {
+  },
+  "replacing": {
+  },
+  "description": "Installs/Configures ZNC IRC bouncer.",
+  "providing": {
+  }
 }
