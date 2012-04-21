@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# exclude unsupported platforms
 case node['platform']
   when 'mac_os_x'
     log "OS X not yet supported."
