@@ -29,6 +29,7 @@ package "coreutils"
 
 user node['znc']['system_user'] do
   comment "ZNC daemon"
+  home "/home/#{node['znc']['system_user']}"
 end
 
 group node['znc']['system_group'] do
@@ -44,6 +45,8 @@ end
   directory dir do
     owner node['znc']['system_user']
     group node['znc']['system_group']
+    action :create
+    recursive true
   end
 end
 
