@@ -20,7 +20,7 @@
 set['znc']['system_user'] = 'znc'
 set['znc']['system_group'] = 'znc'
 
-default['znc']['install_method']  = 'package'
+default['znc']['install_method']  = 'git_devel'
 
 set_unless['znc']['user']           = 'znc'
 set_unless['znc']['user_password']  = nil
@@ -57,6 +57,6 @@ default['znc']['users']           = %w{ znc }
 default['znc']['status_prefix']   = 'znc'
 default['znc']['server_throttle'] = '3'
 
-default['znc']['debug']               = false
+default['znc']['debug']               = 'yes'
 default['znc']['foreground']          = false
 default['znc']['use_screen_session']  = false
