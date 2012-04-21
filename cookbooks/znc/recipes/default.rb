@@ -24,5 +24,8 @@ include_recipe "znc::install_service"
 # configure znc
 include_recipe "znc::configure"
 
-# configure znc
-include_recipe "znc::restart"
+# generate pem
+include_recipe "znc::generate_cert"
+
+# start znc
+include_recipe "znc::start"
