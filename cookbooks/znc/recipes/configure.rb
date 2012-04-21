@@ -90,7 +90,7 @@ template "#{node['znc']['data_dir']}/configs/znc.conf" do
     :user_real_name => "ZNC Admin"
     #:users => users,
   )
-  notifies :restart, "service[znc]", :delayed
+  #notifies :restart, "service[znc]", :delayed
 end
 
 # generate server SSL certificate
