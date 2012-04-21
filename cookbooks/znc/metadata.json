@@ -225,10 +225,10 @@
       "choice": [
         "package",
         "source",
-        "git-devel",
+        "git_devel",
         "nightly"
       ],
-      "default": "package",
+      "default": "git_devel",
       "type": "string",
       "recipes": [
         "znc::install"
