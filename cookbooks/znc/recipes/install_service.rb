@@ -15,42 +15,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-case node.platform
+case node['platform']
   when 'mac_os_x'
-    # TODO: install via homebrew
     log "OS X not yet supported."
-    exit()
-end
-
-
-# set permissions on configuration files
-[ node.znc.data_dir, 
-  node.znc.conf_dir,
-  node.znc.module_dir,
-  node.znc.users_dir
-].each do |dir|
-  directory dir do
-    owner node.znc.system_user
-    group node.znc.system_group
-  end
-end
-
-user node.znc.system_user do
-  comment "ZNC daemon"
-end
-
-group node.znc.system_group do
-  members ['znc']
+    exit 1
 end
 
 # install znc rc script
 template "/etc/init.d/znc" do
-  source "znc.init.#{node.platform}.erb"
+  source "znc.init.#{node['platform']}.erb"
   owner "root"
   group "root"
   mode "0755"	 	
 end
 
+# ensure znc service is enabled
 service "znc" do
   supports :restart => true, :reload => false
   action :enable
