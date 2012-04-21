@@ -64,17 +64,15 @@ pass = "sha256##{pass_hash}##{salt}#"
 template "#{node['znc']['data_dir']}/configs/znc.conf" do
   source "znc.conf.erb"
   mode 0600
-  owner node.znc.user
-  group node.znc.group
+  owner node['znc']['system_user']
+  group node['znc']['system_group']
   variables(
-    :create_user => node.znc.create_user,
     :anon_ip_limit => node.znc.anon_ip_limit,
     :admin_user => node.znc.admin_user,
     :admin_password => "#{pass}",
     :admin_server => "irc.freenode.net 6667",
     :bind_hosts => node.znc.bind_hosts,
     :connect_delay => node.znc.connect_delay,
-    #:users => users,
     :global_modules => node.znc.modules,
     :max_buffer_size_list => "",
     :motd => node.znc.motd,
@@ -84,9 +82,12 @@ template "#{node['znc']['data_dir']}/configs/znc.conf" do
     :status_prefix => node.znc.status_prefix,
     :server_throttle => node.znc.server_throttle,
     :max_buffer_size => node.znc.max_buffer_size,
-    :port => node.znc.port
+    :port => node.znc.port,
+    :user_name => node['znc']['admin_user'],
+    :user_password => node['znc']['admin_password']
+    #:users => users,
   )
-#  notifies :restart, "service[znc]", :immediately
+  notifies :restart, "service[znc]", :delayed
 end
 
 # ensure znc pid file exists
