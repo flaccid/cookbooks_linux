@@ -15,11 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package 'znc' do
-  action :remove
-end
-
 include_recipe 'build-essential'
+
+include_recipe 'znc::uninstall_package'
 
 if node.platform != 'mac_os_x'
   package 'pkg-config' do
