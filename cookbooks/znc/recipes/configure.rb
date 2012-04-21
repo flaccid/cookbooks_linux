@@ -94,7 +94,7 @@ template "#{node['znc']['data_dir']}/configs/znc.conf" do
 end
 
 # generate server SSL certificate
-include_recipe "znc::generate_cert"
+include_recipe "znc::generate_cert" unless File.exists?("#{node['znc']['data_dir']}/znc.pem")
 
 # enable/disable modules
 include_recipe "znc::modules"
