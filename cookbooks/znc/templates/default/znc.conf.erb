@@ -1,3 +1,15 @@
+# ZNC configuration
+# This file is managed by Chef.
+
+# In most cases you should NOT edit znc.conf directly. Use webadmin instead. Editing znc.conf by hand can produce race condition with ZNC accessing the config.
+
+# If you really need to edit znc.conf by hand when ZNC is running, do the following: 
+# 1. pkill -SIGUSR1 znc 
+#      to save current runtime configuration to znc.conf 
+# 2. Edit znc.conf 
+# 3. pkill -SIGHUP znc 
+#      to make ZNC reread its config.
+
 Listen              = <%= @port %>
 #BindHost            = <%= @bind_hosts %>
 PidFile             = <%= @pid_file %>
@@ -10,7 +22,7 @@ StatusPrefix        = <%= @status_prefix %>
 MOTD                = <%= @motd %>
 
 <User <%= @user_name %>>
-    Pass       =  <%= @user_password %>
+    Pass       = <%= @user_password %>
     Admin      = <%= @user_is_admin %>true
     Nick       = <%= @user_nickname %>
     AltNick    = <%= @user_nickname_alt %>_
