@@ -24,7 +24,7 @@ bash "generate-pem" do
    -new -x509 -nodes -sha1 -days 3650 -key znc.key > znc.crt
   cat znc.key znc.crt > znc.pem
   EOH
-  user node.znc.system_user
-  group node.znc.system_group
-  creates "#{node.znc.data_dir}/znc.pem"
+  user node['znc']['system_user']
+  group node['znc']['system_group']
+  creates "#{node['znc']['data_dir']}/znc.pem"
 end
