@@ -18,13 +18,6 @@
 # required
 package "coreutils"
 
-group node['znc']['user']
-
-user node['znc']['user'] do
-  gid node['znc']['user']
-  home "/home/#{node['znc']['user']}"
-end
-
 user node['znc']['system_user'] do
   comment "ZNC daemon"
 end
@@ -33,30 +26,22 @@ group node['znc']['system_group'] do
   members ['znc']
 end
 
-directory "/home/#{node['znc']['user']}/.znc/configs" do
-  owner node['znc']['user']
-  group node['znc']['group']
-  mode "0750"
-  action :create
-  recursive true
-end
-
 # set permissions on configuration files
-[ node.znc.data_dir, 
-  node.znc.conf_dir,
-  node.znc.module_dir,
-  node.znc.users_dir
+[ node['znc']['data_dir'], 
+  node['znc']['conf_dir'],
+  node['znc']['module_dir'],
+  node['znc']['users_dir']
 ].each do |dir|
   directory dir do
-    owner node.znc.system_user
-    group node.znc.system_group
+    owner node['znc']['system_user']
+    group node['znc']['system_group']
   end
 end
 
 # ensure znc pid file exists
 file "#{node['znc']['pid_file']}" do
-  owner node['znc']['user']
-  group node['znc']['group']
+  owner node['znc']['system_user']
+  group node['znc']['system_group']
   mode 0600
   action :create
 end
