@@ -21,6 +21,7 @@ recipe "znc::install_git_devel","Installs ZNC from the git-devel source at GitHu
 recipe "znc::install_nightly","Installs the nightly source snapshot of ZNC."
 recipe "znc::install_from_source_tarball","Installs ZNC from remote source tarball."
 recipe "znc::install_from_package","Installs ZNC from package."
+recipe "znc::uninstall_package","Uninstalls ZNC from package."
 recipe "znc::configure","Configures the ZNC main configuration."
 recipe "znc::add_user","Add a ZNC user."
 recipe "znc::change_user_password","Changes a ZNC user's password."

@@ -393,6 +393,7 @@
     "znc::configure": "Configures the ZNC main configuration.",
     "znc::install": "Install ZNC.",
     "znc::change_user_password": "Changes a ZNC user's password.",
+    "znc::uninstall_package": "Uninstalls ZNC from package.",
     "znc::install_from_package": "Installs ZNC from package.",
     "znc::stop": "Stops the ZNC daemon.",
     "znc::default": "Install and configure ZNC.",
