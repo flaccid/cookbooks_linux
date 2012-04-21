@@ -1,8 +1,10 @@
-#! /bin/sh -x
+#! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          znc
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
+# Required-Start:    $local_fs $network $time $remote_fs
+# Required-Stop:     $local_fs $network $time $remote_fs
 # Short-Description: znc initscript
 # Description:       This is the init-Script for znc.
 ### END INIT INFO
