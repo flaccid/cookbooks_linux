@@ -1,15 +1,14 @@
 Listen              = <%= @port %>
-BindHost            = <%= @bind_hosts %>
+#BindHost            = <%= @bind_hosts %>
 PidFile             = <%= @pid_file %>
 AnonIPLimit         = <%= @anon_ip_limit %>
 ConnectDelay        = <%= @connect_delay %>
 #LoadModule          = <%= @global_modules %>
 #MaxBufferSizeList   = <%= @max_buffer_size_list %>
-ServerThrottle      = <%= @server_throttle %>
+#ServerThrottle      = <%= @server_throttle %>
 StatusPrefix        = <%= @status_prefix %>
 MOTD                = <%= @motd %>
 
-<% if @create_user == "yes" %>
 <User <%= @user_name %>>
     Pass       =  <%= @user_password %>
     Admin      = <%= @user_is_admin %>true
@@ -24,4 +23,3 @@ MOTD                = <%= @motd %>
     <Chan <%= @user_default_channel %>>
     </Chan>
 </User>
-<% end %>
