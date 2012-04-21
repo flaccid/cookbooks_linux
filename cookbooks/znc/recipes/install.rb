@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-log "Platform: '#{node.platform}'."
+log "Platform: '#{node['platform']}'."
 
 # install znc via the desired method
-include_recipe "znc::#{node.znc.install_method}"
+include_recipe "znc::install_from_#{node['znc']['install_method']}"
