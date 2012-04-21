@@ -53,6 +53,18 @@ end
   end
 end
 
+# ensure znc pid file exists
+file "#{node['znc']['pid_file']}" do
+  owner node['znc']['user']
+  group node['znc']['group']
+  mode 0600
+  action :create
+end
+
+# ensure serivice is installed and enabled
+include_recipe "znc::install_service"
+
+# should be moved to a definition, lwrp or lib
 pass_plain = node.znc.admin_password
 salt = `openssl rand -base64 20`
 cmd = "echo -n '#{pass_plain}#{salt}' | sha256sum | awk '{ print $1 }'"
@@ -88,14 +100,6 @@ template "#{node['znc']['data_dir']}/configs/znc.conf" do
     #:users => users,
   )
   notifies :restart, "service[znc]", :delayed
-end
-
-# ensure znc pid file exists
-file "#{node['znc']['pid_file']}" do
-  owner node['znc']['user']
-  group node['znc']['group']
-  mode 0600
-  action :create
 end
 
 #todo: only call if no cert exists
