@@ -226,7 +226,13 @@
         "package",
         "source",
         "git_devel",
-        "nightly"
+        "source_tarball",
+        "nightly",
+        "freebsd_package",
+        "freebsd_port",
+        "homebrew",
+        "mac_ports",
+        "pacman"
       ],
       "default": "git_devel",
       "type": "string",

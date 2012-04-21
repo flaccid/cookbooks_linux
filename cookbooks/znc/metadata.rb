@@ -136,7 +136,7 @@ attribute "znc/user_dir",
 attribute "znc/install_method",
   :display_name => "ZNC Install Method",
   :description => "The installation source for znc, either source or package",
-  :choice => ["package", "source", "git_devel", "nightly"],
+  :choice => ["package", "source", "git_devel", "source_tarball", "nightly", "freebsd_package", "freebsd_port", "homebrew", "mac_ports", "pacman"],
   :default => "git_devel",
   :recipes => ["znc::install"]
     
