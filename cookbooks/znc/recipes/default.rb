@@ -27,5 +27,5 @@ include_recipe "znc::configure"
 # generate pem
 include_recipe "znc::generate_cert"
 
-# start znc
-include_recipe "znc::start"
+# start znc service
+include_recipe "znc::start_service"
