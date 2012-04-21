@@ -67,8 +67,6 @@ template "#{node['znc']['data_dir']}/configs/znc.conf" do
   group node['znc']['system_group']
   variables(
     :anon_ip_limit => node['znc']['anon_ip_limit'],
-    :admin_user => node['znc']['admin_user'],
-    :admin_password => "#{pass}",
     :admin_server => "irc.freenode.net 6667",
     :bind_hosts => node['znc']['bind_hosts'],
     :connect_delay => node['znc']['connect_delay'],
