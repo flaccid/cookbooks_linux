@@ -48,14 +48,16 @@ end
 
 # ensure serivice is installed and enabled
 include_recipe "znc::install_service"
+service "znc"
 
-# should be moved to a definition, lwrp or lib
-pass_plain = node.znc.admin_password
-salt = `openssl rand -base64 20`
-cmd = "echo -n '#{pass_plain}#{salt}' | sha256sum | awk '{ print $1 }'"
-#cmd = "echo -n '#{pass_plain}#{salt}' | openssl dgst -sha256 | awk '{ print $2 }'" 
-pass_hash = `#{cmd}`
-pass = "sha256##{pass_hash}##{salt}#"
+def generate_znc_password(password_plain)
+  salt = `openssl rand -base64 20`.strip
+  cmd = "echo -n '#{password_plain}#{salt}' | sha256sum | awk '{ print $1 }'"
+  #cmd = "echo -n '#{password_plain}#{salt}' | openssl dgst -sha256 | awk '{ print $2 }'" 
+  pass_hash = `#{cmd}`.strip
+  pass = "sha256##{pass_hash.strip}##{salt.strip}#"
+  puts pass
+end
 
 # render znc.conf
 template "#{node['znc']['data_dir']}/configs/znc.conf" do
@@ -81,7 +83,7 @@ template "#{node['znc']['data_dir']}/configs/znc.conf" do
     :max_buffer_size => node['znc.max_buffer_size'],
     :port => node['znc']['port'],
     :user_name => node['znc']['admin_user'],
-    :user_password => node['znc']['admin_password'],
+    :user_password => generate_znc_password(node['znc']['admin_password']),
     :user_nickname => node['znc']['admin_user'],
     :user_nickname_alt => "#{node['znc']['admin_user']}_",
     :user_ident => node['znc']['admin_user'],
