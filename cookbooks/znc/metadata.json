@@ -421,7 +421,7 @@
   "recipes": {
     "znc::module_colloquy": "Install and enable Colloquy ZNC module.",
     "znc::modules": "Enables desired ZNC modules.",
-    "znc::restart": "Restarts the ZNC daemon.",
+    "znc::restart_service": "Restarts the ZNC daemon.",
     "znc::install_from_nightly": "Installs the nightly source snapshot of ZNC.",
     "znc::restore_config": "Restore the ZNC configuration to Git or S3.",
     "znc::add_user": "Add a ZNC user.",
