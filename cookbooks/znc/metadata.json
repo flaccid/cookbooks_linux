@@ -413,6 +413,7 @@
     "znc::install_service": "Installs the ZNC service.",
     "znc::backup_config": "Backup the ZNC configuration to Git or S3.",
     "znc::configure": "Configures the ZNC main configuration.",
+    "znc::uninstall_git_devel": "Uninstalls ZNC from git-devel.",
     "znc::install": "Install ZNC.",
     "znc::change_user_password": "Changes a ZNC user's password.",
     "znc::uninstall_package": "Uninstalls ZNC from package.",
