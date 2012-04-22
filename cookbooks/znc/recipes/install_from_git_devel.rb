@@ -43,12 +43,13 @@ end
 
 execute 'build-znc-git-devel' do
   cwd "/usr/local/src/znc-devel"
-  command "bootstrap.sh && ./configure && make"
+  command "./bootstrap.sh && ./configure && make"
   action :nothing
 end
 
 execute 'install-znc-git-devel' do
-  command "cd /usr/local/src/znc-devel; make install"
+  cwd "/usr/local/src/znc-devel"
+  command "make install"
   action :nothing
 end
 
