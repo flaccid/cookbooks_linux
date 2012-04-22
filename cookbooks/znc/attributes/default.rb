@@ -21,6 +21,7 @@ set['znc']['system_user'] = 'znc'
 set['znc']['system_group'] = 'znc'
 
 default['znc']['install_method']  = 'git_devel'
+default['znc']['source_tarball'] = 'znc-0.206.tar.gz'
 
 set_unless['znc']['user']           = 'znc'
 set_unless['znc']['user_password']  = nil
