@@ -18,6 +18,7 @@
 execute 'uninstall-znc-gitsrc' do
   command "cd /usr/local/src/znc-devel && make uninstall"
   action :run
+  only_if "test -f /usr/local/src/znc-devel"
 end
 
 directory "/usr/local/src/znc-devel" do
