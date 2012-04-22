@@ -435,11 +435,11 @@
     "znc::change_user_password": "Changes a ZNC user's password.",
     "znc::uninstall_package": "Uninstalls ZNC from package.",
     "znc::install_from_package": "Installs ZNC from package.",
-    "znc::stop": "Stops the ZNC daemon.",
+    "znc::stop_service": "Stops the ZNC daemon.",
     "znc::default": "Install and configure ZNC.",
     "znc::generate_cert": "Generates x509 certificate for ZNC.",
-    "znc::source": "Installs ZNC from source.",
-    "znc::start": "Starts the ZNC daemon."
+    "znc::start_service": "Starts the ZNC daemon.",
+    "znc::source": "Installs ZNC from source."
   },
   "groupings": {
   },
