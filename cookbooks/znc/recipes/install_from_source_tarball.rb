@@ -22,18 +22,17 @@
 
 # latest source tarball (at this time) http://znc.in/releases/znc-0.200.tar.gz
 
-# remove any installed znc package
-package 'znc' do
-  action :remove
-end
+# remove znc if installed by package or git-devel
+include_recipe "znc::uninstall_package"
+include_recipe "znc::uninstall_git_devel"
 
 directory "/usr/src/znc" do
   action :create
   recursive true
 end
 
-remote_file "/usr/src/znc/znc-0.200.tar.gz" do
-  source "http://znc.in/releases/znc-0.200.tar.gz"
+remote_file "/usr/src/znc/#{node['znc']['source_tarball']}" do
+  source "http://znc.in/releases/#{node['znc']['source_tarball']}"
   mode "0644"
 end
 
@@ -41,5 +40,5 @@ execute "install_from_source_tarball" do
   #(use --prefix=$HOME/znc if you don't want a system wide installation or simply don't have root; use --with-openssl=/path/to/openssl if you have a non-standard SSL path)
   #(use --enable-extra to configure (and additionally --enable-tcl for modtcl) to include the whole extra package) 
   #( if you are on a dedicated server and your CPU has more than one core, you can use make -jX where X is the number of CPU cores to speed up compilation)
-  command "cd /usr/src/znc && tar -xzvf znc*.*gz && ./configure && make && make install"
+  command "cd /usr/src/znc && tar -xzvf #{node['znc']['source_tarball']} && ./configure && make && make install"
 end
