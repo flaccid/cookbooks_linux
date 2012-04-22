@@ -315,6 +315,23 @@
       "description": "The name of the system group under which ZNC will be run",
       "display_name": "ZNC System Group"
     },
+    "znc/modules": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": [
+        "webadmin"
+      ],
+      "type": "array",
+      "recipes": [
+        "znc::configure",
+        "znc::modules"
+      ],
+      "description": "The ZNC modules to enable globally.",
+      "display_name": "ZNC Modules Enabled"
+    },
     "znc/log_dir": {
       "required": "optional",
       "calculated": false,

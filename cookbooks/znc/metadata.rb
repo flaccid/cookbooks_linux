@@ -147,11 +147,12 @@ attribute "znc/install_service",
   :default => "source_tarball",
   :recipes => ["znc::install"]
     
-#attribute "znc/modules",
-#  :display_name => "ZNC Modules Enabled",
-#  :description => "The ZNC modules to enable globally.",
-#  :default => "admin",
-#  :recipes => ["znc::configure", "znc::modules"]
+attribute "znc/modules",
+  :display_name => "ZNC Modules Enabled",
+  :description => "The ZNC modules to enable globally.",
+  :type => "array",
+  :default => [ "webadmin" ],
+  :recipes => ["znc::configure", "znc::modules"]
 
 attribute "znc/debug",
   :display_name => "ZNC Debug Mode",
