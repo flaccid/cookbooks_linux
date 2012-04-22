@@ -140,11 +140,11 @@ attribute "znc/user_dir",
   :default => "/etc/znc/users",
   :recipes => ["znc::configure", "znc::generate_cert"]
   
-attribute "znc/install_method",
+attribute "znc/install_service",
   :display_name => "ZNC Install Method",
   :description => "The installation source for znc, either source or package",
   :choice => ["package", "source", "git_devel", "source_tarball", "nightly", "freebsd_package", "freebsd_port", "homebrew", "mac_ports", "pacman"],
-  :default => "git_devel",
+  :default => "source_tarball",
   :recipes => ["znc::install"]
     
 #attribute "znc/modules",

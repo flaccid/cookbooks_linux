@@ -233,29 +233,6 @@
       "description": "Enable/disable starts/stops of the ZNC service in a screen session.",
       "display_name": "ZNC Run in Screen"
     },
-    "znc/install_method": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-        "package",
-        "source",
-        "git_devel",
-        "source_tarball",
-        "nightly",
-        "freebsd_package",
-        "freebsd_port",
-        "homebrew",
-        "mac_ports",
-        "pacman"
-      ],
-      "default": "git_devel",
-      "type": "string",
-      "recipes": [
-        "znc::install"
-      ],
-      "description": "The installation source for znc, either source or package",
-      "display_name": "ZNC Install Method"
-    },
     "znc/user_dir": {
       "required": "optional",
       "calculated": false,
@@ -299,6 +276,29 @@
       ],
       "description": "The PID file for ZNC.",
       "display_name": "ZNC PID File"
+    },
+    "znc/install_service": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+        "package",
+        "source",
+        "git_devel",
+        "source_tarball",
+        "nightly",
+        "freebsd_package",
+        "freebsd_port",
+        "homebrew",
+        "mac_ports",
+        "pacman"
+      ],
+      "default": "source_tarball",
+      "type": "string",
+      "recipes": [
+        "znc::install"
+      ],
+      "description": "The installation source for znc, either source or package",
+      "display_name": "ZNC Install Method"
     },
     "znc/system_group": {
       "required": "optional",
