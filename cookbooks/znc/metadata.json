@@ -91,9 +91,9 @@
       "required": "optional",
       "calculated": false,
       "choice": [
-        "+7777"
+        "7777"
       ],
-      "default": "+7777",
+      "default": "7777",
       "type": "string",
       "recipes": [
         "znc::configure"
