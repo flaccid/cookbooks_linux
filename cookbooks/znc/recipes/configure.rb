@@ -30,6 +30,7 @@ package "coreutils"
 user node['znc']['system_user'] do
   comment "ZNC daemon"
   home "/home/#{node['znc']['system_user']}"
+  shell "/bin/sh"
 end
 
 group node['znc']['system_group'] do
