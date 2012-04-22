@@ -50,6 +50,5 @@ end
 execute "extract_source_from_tarball" do
   cwd "/usr/src/znc"
   command "tar -zxf #{node['znc']['source_tarball']}"
-  notifies :run, "execute[build_and_install_from_source]"
+  notifies :run, "execute[build_and_install_from_source]", :immediately
 end
-
