@@ -22,4 +22,5 @@ end
 
 directory "/usr/local/src/znc-devel" do
   action :delete
+  recursive true
 end
