@@ -57,4 +57,5 @@ end
 # ln -s /usr/local/bin/znc /usr/bin/znc
 link "/usr/bin/znc" do
   to "/usr/local/bin/znc"
+  not_if "test -f /usr/bin/znc"
 end
