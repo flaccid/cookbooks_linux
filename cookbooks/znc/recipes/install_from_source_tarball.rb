@@ -37,8 +37,9 @@ remote_file "/usr/src/znc/#{node['znc']['source_tarball']}" do
 end
 
 execute "install_from_source_tarball" do
+  cwd "/usr/src/znc"
   #(use --prefix=$HOME/znc if you don't want a system wide installation or simply don't have root; use --with-openssl=/path/to/openssl if you have a non-standard SSL path)
   #(use --enable-extra to configure (and additionally --enable-tcl for modtcl) to include the whole extra package) 
   #( if you are on a dedicated server and your CPU has more than one core, you can use make -jX where X is the number of CPU cores to speed up compilation)
-  command "cd /usr/src/znc && tar -xzvf #{node['znc']['source_tarball']} && ./configure && make && make install"
+  command "tar -zxvf #{node['znc']['source_tarball']} && cd znc-* && ./configure && make && make install"
 end
