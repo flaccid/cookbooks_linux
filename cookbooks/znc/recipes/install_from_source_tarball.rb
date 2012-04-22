@@ -20,7 +20,7 @@
 # Please note that compiling can take 5-10mins or more. 
 # See the FAQ page if you encounter problems, http://wiki.znc.in/FAQ
 
-# latest source tarball (at this time) http://znc.in/releases/znc-0.200.tar.gz
+# latest source tarball (at this time) http://znc.in/releases/znc-0.206.tar.gz
 
 # remove znc if installed by package or git-devel
 log "Removing ZNC by package and git-devel if installed."
@@ -50,5 +50,5 @@ end
 execute "extract_source_from_tarball" do
   cwd "/usr/src/znc"
   command "tar -zxf #{node['znc']['source_tarball']}"
-  notifies :run, "execute[build_and_install_from_source]", :immediately
+  notifies :run, resources(:execute => 'build_and_install_from_source'), :immediately
 end
