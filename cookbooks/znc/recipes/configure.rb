@@ -61,7 +61,6 @@ end
 
 # ensure serivice is installed and enabled
 include_recipe "znc::install_service"
-service "znc"
 
 admin_password = generate_znc_password(node['znc']['admin_password'])
 
@@ -102,3 +101,8 @@ include_recipe "znc::generate_cert" unless File.exists?("#{node['znc']['data_dir
 
 # enable/disable modules
 include_recipe "znc::modules"
+
+# enable/start service
+service "znc" do
+  action [:enable, :start]
+end
