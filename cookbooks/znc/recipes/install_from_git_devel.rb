@@ -53,3 +53,8 @@ git '/usr/local/src/znc-devel' do
   notifies :run, resources(:execute => 'build-znc-git-devel'), :immediately
   notifies :run, resources(:execute => 'install-znc-git-devel'), :delayed
 end
+
+# ln -s /usr/local/bin/znc /usr/bin/znc
+link "/usr/bin/znc" do
+  to "/usr/local/bin/znc"
+end

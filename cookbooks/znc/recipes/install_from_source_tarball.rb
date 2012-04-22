@@ -52,3 +52,8 @@ execute "extract_source_from_tarball" do
   command "tar -zxf #{node['znc']['source_tarball']}"
   notifies :run, resources(:execute => 'build_and_install_from_source'), :immediately
 end
+
+# ln -s /usr/local/bin/znc /usr/bin/znc
+link "/usr/bin/znc" do
+  to "/usr/local/bin/znc"
+end
