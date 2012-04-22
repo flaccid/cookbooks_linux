@@ -37,6 +37,12 @@ attribute "znc/configure_options",
   :description => "./configure options for ZNC.",
   :default => "",
   :recipes => ["znc::source"]
+  
+attribute "znc/source_tarball",
+  :display_name => "ZNC Source Tarball",
+  :description => "The ZNC source tarball from http://znc.in/releases/",
+  :default => "znc-0.206.tar.gz",
+  :recipes => ["znc::install_from_source_tarball"]
 
 attribute "znc/anon_ip_limit",
   :display_name => "ZNC Anonymous IP Limit",

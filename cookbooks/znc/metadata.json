@@ -130,6 +130,20 @@
       "description": "Limits the number of unidentified connections per IP with ZNC.",
       "display_name": "ZNC Anonymous IP Limit"
     },
+    "znc/source_tarball": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "znc-0.206.tar.gz",
+      "type": "string",
+      "recipes": [
+        "znc::install_from_source_tarball"
+      ],
+      "description": "The ZNC source tarball from http://znc.in/releases/",
+      "display_name": "ZNC Source Tarball"
+    },
     "znc/connect_delay": {
       "required": "optional",
       "calculated": false,
