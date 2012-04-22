@@ -20,6 +20,7 @@ include_recipe 'build-essential'
 # sources don't share the same locations so this shouldn't be required
 include_recipe 'znc::uninstall_package'
 
+# ensure pkg-config is installed
 pkgconfig_pkg = value_for_platform(
   [ "debian","ubuntu" ] => {
     "default" => 'pkg-config'
@@ -41,7 +42,8 @@ directory '/usr/local/src/znc-devel' do
 end
 
 execute 'build-znc-git-devel' do
-  command "rm -vf /usr/local/src/znc-devel/modules/partyline.cpp && cd /usr/local/src/znc-devel && ./bootstrap.sh && ./configure && make"
+  cwd "/usr/local/src/znc-devel"
+  command "bootstrap.sh && ./configure && make"
   action :nothing
 end
 
