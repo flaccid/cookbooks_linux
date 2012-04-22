@@ -18,7 +18,7 @@
 include_recipe 'build-essential'
 
 # sources don't share the same locations so this shouldn't be required
-#include_recipe 'znc::uninstall_package'
+include_recipe 'znc::uninstall_package'
 
 # ensure pkgconfig is installed
 if node.platform != 'mac_os_x'
