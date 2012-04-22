@@ -16,5 +16,5 @@
 # limitations under the License.
 
 service "znc" do
-  action :start
+  action [:enable, :start]
 end
