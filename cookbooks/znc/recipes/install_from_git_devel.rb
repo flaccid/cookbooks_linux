@@ -17,9 +17,6 @@
 
 include_recipe 'build-essential'
 
-# sources don't share the same locations so this shouldn't be required
-include_recipe 'znc::uninstall_package'
-
 # ensure pkg-config is installed
 pkgconfig_pkg = value_for_platform(
   [ "debian","ubuntu" ] => {
@@ -32,6 +29,9 @@ pkgconfig_pkg = value_for_platform(
 )
 package pkgconfig_pkg
 
+# sources don't share the same locations so this shouldn't be required
+include_recipe 'znc::uninstall_package'
+
 directory '/usr/local/src/znc-devel' do
   recursive true
   action :delete
@@ -41,24 +41,24 @@ directory '/usr/local/src/znc-devel' do
   action :create
 end
 
-execute 'build-znc-git-devel' do
-  cwd "/usr/local/src/znc-devel"
-  command "./bootstrap.sh && ./configure && make"
-  action :nothing
-end
-
 execute 'install-znc-git-devel' do
   cwd "/usr/local/src/znc-devel"
   command "make install"
   action :nothing
 end
 
+execute 'build-znc-git-devel' do
+  cwd "/usr/local/src/znc-devel"
+  command "./bootstrap.sh && ./configure && make"
+  action :nothing
+  notifies :run, resources(:execute => 'install-znc-git-devel'), :immediately
+end
+
 git '/usr/local/src/znc-devel' do
   repository "git://github.com/znc/znc.git"
   reference 'master'
   action :sync
-  notifies :run, resources(:execute => 'build-znc-git-devel'), :immediately
-  notifies :run, resources(:execute => 'install-znc-git-devel'), :delayed
+  notifies :run, resources(:execute => 'build-znc-git-devel'), :immediately  
 end
 
 # ln -s /usr/local/bin/znc /usr/bin/znc
