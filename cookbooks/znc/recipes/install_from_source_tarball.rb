@@ -23,6 +23,7 @@
 # latest source tarball (at this time) http://znc.in/releases/znc-0.200.tar.gz
 
 # remove znc if installed by package or git-devel
+log "Removing ZNC by package and git-devel if installed."
 include_recipe "znc::uninstall_package"
 include_recipe "znc::uninstall_git_devel"
 
@@ -31,6 +32,7 @@ directory "/usr/src/znc" do
   recursive true
 end
 
+log "Fetching source tarball, http://znc.in/releases/#{node['znc']['source_tarball']}."
 remote_file "/usr/src/znc/#{node['znc']['source_tarball']}" do
   source "http://znc.in/releases/#{node['znc']['source_tarball']}"
   mode "0644"
