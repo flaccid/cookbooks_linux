@@ -136,7 +136,7 @@
       "choice": [
 
       ],
-      "default": "znc-0.206.tar.gz",
+      "default": "znc-latest.tar.gz",
       "type": "string",
       "recipes": [
         "znc::install_from_source_tarball"
