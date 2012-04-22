@@ -18,7 +18,7 @@
 // 3. pkill -SIGHUP znc 
 //      to make ZNC reread its config.
 
-Listener4  = 7777
+Listener4  = <%= @port %>
 
 <User <%= @user_nickname %>>
 	Pass       = <%= @user_password %>
@@ -33,6 +33,6 @@ Listener4  = 7777
 
 	LoadModule = admin
 
-	Server     = irc.freenode.net 6667 
+	Server     = <%= @admin_server %>
 
 </User>
