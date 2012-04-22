@@ -52,7 +52,7 @@ default['znc']['connect_delay']   = '3'
 default['znc']['port']            = '7777'
 default['znc']['skin']            = "dark-clouds"
 default['znc']['max_buffer_size'] = 500
-default['znc']['modules']         = %w{ webadmin adminlog }
+default['znc']['modules']         = %w{ webadmin }
 default['znc']['users']           = %w{ znc }
 
 default['znc']['status_prefix']   = 'znc'
