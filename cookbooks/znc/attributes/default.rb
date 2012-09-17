@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-set['znc']['system_user'] = 'znc'
-set['znc']['system_group'] = 'znc'
+default['znc']['system_user'] = 'znc'
+default['znc']['system_group'] = 'znc'
 
 default['znc']['install_method']  = 'git_devel'
 default['znc']['source_tarball'] = 'znc-latest.tar.gz'
@@ -30,7 +30,7 @@ set_unless['znc']['group']          = 'znc'
 default['znc']['admin_user']      = 'znc-admin'
 default['znc']['admin_password']  = nil
 
-default['znc']['data_dir']        = "/home/#{znc['user']}/.znc"
+default['znc']['data_dir']        = "/etc/znc"
 default['znc']['conf_dir']        = "#{znc['data_dir']}/configs"
 default['znc']['log_dir']         = "#{znc['data_dir']}/moddata/adminlog"
 default['znc']['module_dir']      = "#{znc['data_dir']}/modules"
@@ -58,6 +58,7 @@ default['znc']['users']           = %w{ znc }
 default['znc']['status_prefix']   = 'znc'
 default['znc']['server_throttle'] = '3'
 
+# to be implemented
 default['znc']['debug']               = 'yes'
 default['znc']['foreground']          = false
 default['znc']['use_screen_session']  = false
