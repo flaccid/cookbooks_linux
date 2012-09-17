@@ -1,285 +1,288 @@
 {
-  "dependencies": {
-    "build-essential": ">= 0.0.0"
+  "recipes": {
+    "znc::backup_config": "Backup the ZNC configuration to Git or S3.",
+    "znc::modules": "Enables desired ZNC modules.",
+    "znc::install_from_git_devel": "Installs ZNC from the git-devel source at GitHub.",
+    "znc::source": "Installs ZNC from source.",
+    "znc::module_colloquy": "Install and enable Colloquy ZNC module.",
+    "znc::install_from_package": "Installs ZNC from package.",
+    "znc::install_from_source_tarball": "Installs ZNC from remote source tarball.",
+    "znc::uninstall_git_devel": "Uninstalls ZNC from git-devel.",
+    "znc::configure": "Configures the ZNC main configuration.",
+    "znc::restore_config": "Restore the ZNC configuration to Git or S3.",
+    "znc::generate_cert": "Generates x509 certificate for ZNC.",
+    "znc::change_user_password": "Changes a ZNC user's password.",
+    "znc::uninstall_package": "Uninstalls ZNC from package.",
+    "znc::restart_service": "Restarts the ZNC daemon.",
+    "znc::start_service": "Starts the ZNC daemon.",
+    "znc::install": "Install ZNC.",
+    "znc::default": "Install and configure ZNC.",
+    "znc::install_from_nightly": "Installs the nightly source snapshot of ZNC.",
+    "znc::stop_service": "Stops the ZNC daemon.",
+    "znc::add_user": "Add a ZNC user.",
+    "znc::install_service": "Installs the ZNC service."
   },
-  "name": "znc",
-  "maintainer_email": "chris.fordham@rightscale.com",
+  "groupings": {
+  },
   "attributes": {
-    "znc/skin": {
-      "required": "optional",
+    "znc/max_buffer_size": {
+      "display_name": "ZNC Max Buffer Size",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
       "calculated": false,
+      "description": "ZNC maximum buffer size.",
+      "required": "optional",
+      "default": "500",
+      "choice": [
+        "500",
+        "1024"
+      ]
+    },
+    "znc/pid_file": {
+      "display_name": "ZNC PID File",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "calculated": false,
+      "description": "The PID file for ZNC.",
+      "required": "optional",
+      "default": "/var/lib/znc.pid",
+      "choice": [
+
+      ]
+    },
+    "znc/modules": {
+      "display_name": "ZNC Modules Enabled",
+      "type": "array",
+      "recipes": [
+        "znc::configure",
+        "znc::modules"
+      ],
+      "calculated": false,
+      "description": "The ZNC modules to enable globally.",
+      "required": "optional",
+      "default": [
+        "webadmin"
+      ],
+      "choice": [
+
+      ]
+    },
+    "znc/system_group": {
+      "display_name": "ZNC System Group",
+      "type": "string",
+      "recipes": [
+        "znc::configure",
+        "znc::generate_cert"
+      ],
+      "calculated": false,
+      "description": "The name of the system group under which ZNC will be run",
+      "required": "optional",
+      "default": "znc",
+      "choice": [
+
+      ]
+    },
+    "znc/skin": {
+      "display_name": "ZNC Skin",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "calculated": false,
+      "description": "ZNC skin.",
+      "required": "optional",
+      "default": "dark-clouds",
       "choice": [
         "dark-clouds"
-      ],
-      "default": "dark-clouds",
+      ]
+    },
+    "znc/users": {
+      "display_name": "ZNC Users",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
-      "description": "ZNC skin.",
-      "display_name": "ZNC Skin"
-    },
-    "znc/admin_user": {
-      "required": "optional",
       "calculated": false,
+      "description": "Initial users to create when configuring ZNC.",
+      "required": "optional",
+      "default": "znc",
       "choice": [
 
-      ],
-      "default": "znc-admin",
+      ]
+    },
+    "znc/user_dir": {
+      "display_name": "ZNC User Dir",
       "type": "string",
       "recipes": [
-        "znc::configure"
+        "znc::configure",
+        "znc::generate_cert"
       ],
-      "description": "The name of the ZNC admin user.",
-      "display_name": "ZNC Admin User"
+      "calculated": false,
+      "description": "Directory where ZNC users will be stored",
+      "required": "optional",
+      "default": "/etc/znc/users",
+      "choice": [
+
+      ]
     },
     "znc/status_prefix": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-
-      ],
+      "display_name": "ZNC Status Prefix",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
+      "calculated": false,
       "description": "The prefix for the status and module queries. This setting may be overwritten by users.",
-      "display_name": "ZNC Status Prefix"
-    },
-    "znc/motd": {
       "required": "optional",
-      "calculated": false,
       "choice": [
 
-      ],
-      "default": "Welcome to ZNC.",
-      "type": "string",
-      "recipes": [
-        "znc::configure"
-      ],
-      "description": "The 'message of the day' which is sent to clients on connect via notice from *status. Can be specified multiple times.",
-      "display_name": "ZNC MOTD"
-    },
-    "znc/admin_password": {
-      "required": "required",
-      "calculated": false,
-      "choice": [
-
-      ],
-      "type": "string",
-      "recipes": [
-        "znc::configure"
-      ],
-      "description": "The password of the ZNC admin user.",
-      "display_name": "ZNC Admin Password"
-    },
-    "znc/bind_hosts": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-
-      ],
-      "default": "127.0.0.1",
-      "type": "string",
-      "recipes": [
-        "znc::configure"
-      ],
-      "description": "This is a list of allowed bindhosts for ZNC.",
-      "display_name": "ZNC Bind Host"
-    },
-    "znc/port": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-        "7777"
-      ],
-      "default": "7777",
-      "type": "string",
-      "recipes": [
-        "znc::configure"
-      ],
-      "description": "ZNC daemon listen port.",
-      "display_name": "ZNC IPv4 Listen Port"
-    },
-    "znc/foreground": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-        "yes",
-        "no"
-      ],
-      "default": "no",
-      "type": "string",
-      "recipes": [
-        "znc::install_service"
-      ],
-      "description": "Enable/disable foreground of the ZNC service process.",
-      "display_name": "ZNC Foreground Mode"
-    },
-    "znc/anon_ip_limit": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-
-      ],
-      "default": "2",
-      "type": "string",
-      "recipes": [
-        "znc::configure"
-      ],
-      "description": "Limits the number of unidentified connections per IP with ZNC.",
-      "display_name": "ZNC Anonymous IP Limit"
+      ]
     },
     "znc/source_tarball": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-
-      ],
-      "default": "znc-latest.tar.gz",
+      "display_name": "ZNC Source Tarball",
       "type": "string",
       "recipes": [
         "znc::install_from_source_tarball"
       ],
+      "calculated": false,
       "description": "The ZNC source tarball from http://znc.in/releases/",
-      "display_name": "ZNC Source Tarball"
-    },
-    "znc/connect_delay": {
       "required": "optional",
-      "calculated": false,
+      "default": "znc-latest.tar.gz",
       "choice": [
 
-      ],
-      "default": "3",
+      ]
+    },
+    "znc/port": {
+      "display_name": "ZNC IPv4 Listen Port",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
-      "description": "The time every connection will be delayed, in seconds. Some servers refuse your connection if you reconnect too fast. This affects the connection between ZNC and the IRC server; not the connection between your IRC client and ZNC.",
-      "display_name": "ZNC Connect Delay"
-    },
-    "znc/configure_options": {
-      "required": "optional",
       "calculated": false,
-      "choice": [
-
-      ],
-      "default": "",
-      "type": "string",
-      "recipes": [
-        "znc::source"
-      ],
-      "description": "./configure options for ZNC.",
-      "display_name": "ZNC Compile Options"
-    },
-    "znc/module_dir": {
+      "description": "ZNC daemon listen port.",
       "required": "optional",
-      "calculated": false,
+      "default": "7777",
       "choice": [
-
-      ],
-      "default": "/etc/znc/modules",
-      "type": "string",
-      "recipes": [
-        "znc::configure",
-        "znc::modules",
-        "znc:module_colloquy"
-      ],
-      "description": "Directory where ZNC modules will be stored",
-      "display_name": "ZNC Module Dir"
-    },
-    "znc/data_dir": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-
-      ],
-      "default": "/etc/znc",
-      "type": "string",
-      "recipes": [
-        "znc::configure",
-        "znc::generate_cert"
-      ],
-      "description": "Directory where ZNC data will be stored",
-      "display_name": "ZNC Data Dir"
-    },
-    "znc/max_buffer_size": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-        "500",
-        "1024"
-      ],
-      "default": "500",
-      "type": "string",
-      "recipes": [
-        "znc::configure"
-      ],
-      "description": "ZNC maximum buffer size.",
-      "display_name": "ZNC Max Buffer Size"
+        "7777"
+      ]
     },
     "znc/use_screen_session": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-        "yes",
-        "no"
-      ],
-      "default": "no",
+      "display_name": "ZNC Run in Screen",
       "type": "string",
       "recipes": [
         "znc::install_service"
       ],
+      "calculated": false,
       "description": "Enable/disable starts/stops of the ZNC service in a screen session.",
-      "display_name": "ZNC Run in Screen"
-    },
-    "znc/user_dir": {
       "required": "optional",
-      "calculated": false,
+      "default": "no",
       "choice": [
-
-      ],
-      "default": "/etc/znc/users",
+        "yes",
+        "no"
+      ]
+    },
+    "znc/debug": {
+      "display_name": "ZNC Debug Mode",
       "type": "string",
       "recipes": [
         "znc::configure",
-        "znc::generate_cert"
+        "znc::install_service"
       ],
-      "description": "Directory where ZNC users will be stored",
-      "display_name": "ZNC User Dir"
-    },
-    "znc/system_user": {
-      "required": "optional",
       "calculated": false,
-      "choice": [
-
-      ],
-      "default": "znc",
-      "type": "string",
-      "recipes": [
-        "znc::configure",
-        "znc::generate_cert"
-      ],
-      "description": "The name of the system user under which ZNC will be run.",
-      "display_name": "ZNC System User"
-    },
-    "znc/pid_file": {
+      "description": "Enable/disable debugging of ZNC service start and process.",
       "required": "optional",
-      "calculated": false,
+      "default": "no",
       "choice": [
-
-      ],
-      "default": "/var/lib/znc.pid",
+        "yes",
+        "no"
+      ]
+    },
+    "znc/motd": {
+      "display_name": "ZNC MOTD",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
-      "description": "The PID file for ZNC.",
-      "display_name": "ZNC PID File"
+      "calculated": false,
+      "description": "The 'message of the day' which is sent to clients on connect via notice from *status. Can be specified multiple times.",
+      "required": "optional",
+      "default": "Welcome to ZNC.",
+      "choice": [
+
+      ]
+    },
+    "znc/log_dir": {
+      "display_name": "ZNC Log Dir",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "calculated": false,
+      "description": "Directory where ZNC logs will be stored",
+      "required": "optional",
+      "default": "/var/log/znc",
+      "choice": [
+
+      ]
+    },
+    "znc/system_user": {
+      "display_name": "ZNC System User",
+      "type": "string",
+      "recipes": [
+        "znc::configure",
+        "znc::generate_cert"
+      ],
+      "calculated": false,
+      "description": "The name of the system user under which ZNC will be run.",
+      "required": "optional",
+      "default": "znc",
+      "choice": [
+
+      ]
+    },
+    "znc/server_throttle": {
+      "display_name": "ZNC Server Throttle",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
+      ],
+      "calculated": false,
+      "description": "The time between two connect attempts to the same hostname to ZNC.",
+      "required": "optional",
+      "default": "3",
+      "choice": [
+
+      ]
+    },
+    "znc/foreground": {
+      "display_name": "ZNC Foreground Mode",
+      "type": "string",
+      "recipes": [
+        "znc::install_service"
+      ],
+      "calculated": false,
+      "description": "Enable/disable foreground of the ZNC service process.",
+      "required": "optional",
+      "default": "no",
+      "choice": [
+        "yes",
+        "no"
+      ]
     },
     "znc/install_service": {
-      "required": "optional",
+      "display_name": "ZNC Install Method",
+      "type": "string",
+      "recipes": [
+        "znc::install"
+      ],
       "calculated": false,
+      "description": "The installation source for znc, either source or package",
+      "required": "optional",
+      "default": "source_tarball",
       "choice": [
         "package",
         "source",
@@ -291,163 +294,161 @@
         "homebrew",
         "mac_ports",
         "pacman"
-      ],
-      "default": "source_tarball",
+      ]
+    },
+    "znc/configure_options": {
+      "display_name": "ZNC Compile Options",
       "type": "string",
       "recipes": [
-        "znc::install"
+        "znc::source"
       ],
-      "description": "The installation source for znc, either source or package",
-      "display_name": "ZNC Install Method"
-    },
-    "znc/system_group": {
-      "required": "optional",
       "calculated": false,
+      "description": "./configure options for ZNC.",
+      "required": "optional",
+      "default": "",
       "choice": [
 
+      ]
+    },
+    "znc/conf_dir": {
+      "display_name": "ZNC Config Dir",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
       ],
-      "default": "znc",
+      "calculated": false,
+      "description": "Directory where ZNC configuration will be stored",
+      "required": "optional",
+      "default": "/etc/znc/configs",
+      "choice": [
+
+      ]
+    },
+    "znc/data_dir": {
+      "display_name": "ZNC Data Dir",
       "type": "string",
       "recipes": [
         "znc::configure",
         "znc::generate_cert"
       ],
-      "description": "The name of the system group under which ZNC will be run",
-      "display_name": "ZNC System Group"
-    },
-    "znc/modules": {
-      "required": "optional",
       "calculated": false,
+      "description": "Directory where ZNC data will be stored",
+      "required": "optional",
+      "default": "/etc/znc",
       "choice": [
 
-      ],
-      "default": [
-        "webadmin"
-      ],
-      "type": "array",
-      "recipes": [
-        "znc::configure",
-        "znc::modules"
-      ],
-      "description": "The ZNC modules to enable globally.",
-      "display_name": "ZNC Modules Enabled"
+      ]
     },
-    "znc/log_dir": {
-      "required": "optional",
-      "calculated": false,
-      "choice": [
-
-      ],
-      "default": "/var/log/znc",
+    "znc/admin_user": {
+      "display_name": "ZNC Admin User",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
-      "description": "Directory where ZNC logs will be stored",
-      "display_name": "ZNC Log Dir"
-    },
-    "znc/conf_dir": {
-      "required": "optional",
       "calculated": false,
+      "description": "The name of the ZNC admin user.",
+      "required": "optional",
+      "default": "znc-admin",
       "choice": [
 
-      ],
-      "default": "/etc/znc/configs",
+      ]
+    },
+    "znc/bind_hosts": {
+      "display_name": "ZNC Bind Host",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
-      "description": "Directory where ZNC configuration will be stored",
-      "display_name": "ZNC Config Dir"
-    },
-    "znc/users": {
-      "required": "optional",
       "calculated": false,
+      "description": "This is a list of allowed bindhosts for ZNC.",
+      "required": "optional",
+      "default": "127.0.0.1",
       "choice": [
 
-      ],
-      "default": "znc",
+      ]
+    },
+    "znc/anon_ip_limit": {
+      "display_name": "ZNC Anonymous IP Limit",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
-      "description": "Initial users to create when configuring ZNC.",
-      "display_name": "ZNC Users"
-    },
-    "znc/debug": {
-      "required": "optional",
       "calculated": false,
-      "choice": [
-        "yes",
-        "no"
-      ],
-      "default": "no",
-      "type": "string",
-      "recipes": [
-        "znc::configure",
-        "znc::install_service"
-      ],
-      "description": "Enable/disable debugging of ZNC service start and process.",
-      "display_name": "ZNC Debug Mode"
-    },
-    "znc/server_throttle": {
+      "description": "Limits the number of unidentified connections per IP with ZNC.",
       "required": "optional",
-      "calculated": false,
+      "default": "2",
       "choice": [
 
+      ]
+    },
+    "znc/connect_delay": {
+      "display_name": "ZNC Connect Delay",
+      "type": "string",
+      "recipes": [
+        "znc::configure"
       ],
+      "calculated": false,
+      "description": "The time every connection will be delayed, in seconds. Some servers refuse your connection if you reconnect too fast. This affects the connection between ZNC and the IRC server; not the connection between your IRC client and ZNC.",
+      "required": "optional",
       "default": "3",
+      "choice": [
+
+      ]
+    },
+    "znc/module_dir": {
+      "display_name": "ZNC Module Dir",
+      "type": "string",
+      "recipes": [
+        "znc::configure",
+        "znc::modules",
+        "znc:module_colloquy"
+      ],
+      "calculated": false,
+      "description": "Directory where ZNC modules will be stored",
+      "required": "optional",
+      "default": "/etc/znc/modules",
+      "choice": [
+
+      ]
+    },
+    "znc/admin_password": {
+      "display_name": "ZNC Admin Password",
       "type": "string",
       "recipes": [
         "znc::configure"
       ],
-      "description": "The time between two connect attempts to the same hostname to ZNC.",
-      "display_name": "ZNC Server Throttle"
+      "calculated": false,
+      "description": "The password of the ZNC admin user.",
+      "required": "required",
+      "choice": [
+
+      ]
     }
   },
-  "license": "Apache 2.0",
-  "suggestions": {
-  },
-  "platforms": {
-    "debian": ">= 0.0.0",
-    "mac_os_x": ">= 0.0.0",
-    "ubuntu": ">= 0.0.0"
-  },
-  "maintainer": "Chris Fordham",
-  "long_description": "Description\n===========\n\nInstalls and configures ZNC, an IRC bouncer.\n\nRequirements\n============\n\nPlatform\n--------\n\n* Debian, Ubuntu\n\nUsage\n=====\n\ndefault\n-------\n\nInclude the default recipe in a run list, to get `znc`.  By default `znc` is installed from packages but this can be changed by using the `install_method` attribute.\n\npackage\n-------\n\nThis recipe installs ZNC from packages.\n\nsource\n------\n\nThis recipe installs ZNC from source.\n\nLicense and Author\n==================\n\nAuthor:: Seth Chisamore (<schisamo@gmail.com>)\n\nCopyright:: 2011, Seth Chisamore\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
-  "version": "0.0.1",
   "recommendations": {
   },
-  "recipes": {
-    "znc::module_colloquy": "Install and enable Colloquy ZNC module.",
-    "znc::modules": "Enables desired ZNC modules.",
-    "znc::restart_service": "Restarts the ZNC daemon.",
-    "znc::install_from_nightly": "Installs the nightly source snapshot of ZNC.",
-    "znc::restore_config": "Restore the ZNC configuration to Git or S3.",
-    "znc::add_user": "Add a ZNC user.",
-    "znc::install_from_source_tarball": "Installs ZNC from remote source tarball.",
-    "znc::install_from_git_devel": "Installs ZNC from the git-devel source at GitHub.",
-    "znc::install_service": "Installs the ZNC service.",
-    "znc::backup_config": "Backup the ZNC configuration to Git or S3.",
-    "znc::configure": "Configures the ZNC main configuration.",
-    "znc::uninstall_git_devel": "Uninstalls ZNC from git-devel.",
-    "znc::install": "Install ZNC.",
-    "znc::change_user_password": "Changes a ZNC user's password.",
-    "znc::uninstall_package": "Uninstalls ZNC from package.",
-    "znc::install_from_package": "Installs ZNC from package.",
-    "znc::stop_service": "Stops the ZNC daemon.",
-    "znc::default": "Install and configure ZNC.",
-    "znc::generate_cert": "Generates x509 certificate for ZNC.",
-    "znc::start_service": "Starts the ZNC daemon.",
-    "znc::source": "Installs ZNC from source."
+  "platforms": {
+    "mac_os_x": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0"
   },
-  "groupings": {
+  "maintainer_email": "chris.fordham@rightscale.com",
+  "maintainer": "Chris Fordham",
+  "providing": {
   },
   "conflicting": {
   },
+  "version": "0.0.1",
   "replacing": {
   },
   "description": "Installs/Configures ZNC IRC bouncer.",
-  "providing": {
-  }
+  "suggestions": {
+  },
+  "long_description": "Description\n===========\n\nInstalls and configures ZNC, an IRC bouncer.\n\nRequirements\n============\n\nPlatform\n--------\n\n* Debian, Ubuntu\n\nUsage\n=====\n\ndefault\n-------\n\nInclude the default recipe in a run list, to get `znc`.  By default `znc` is installed from packages but this can be changed by using the `install_method` attribute.\n\npackage\n-------\n\nThis recipe installs ZNC from packages.\n\nsource\n------\n\nThis recipe installs ZNC from source.\n\nLicense and Author\n==================\n\nAuthor:: Seth Chisamore (<schisamo@gmail.com>)\n\nCopyright:: 2011, Seth Chisamore\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "name": "znc",
+  "dependencies": {
+    "git": ">= 0.0.0",
+    "build-essential": ">= 0.0.0"
+  },
+  "license": "Apache 2.0"
 }
