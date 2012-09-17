@@ -16,6 +16,7 @@
 # limitations under the License.
 
 include_recipe 'build-essential'
+include_recipe 'git'
 
 # ensure pkg-config is installed
 pkgconfig_pkg = value_for_platform(
